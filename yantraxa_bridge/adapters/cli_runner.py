@@ -517,7 +517,8 @@ def cli_prompt(ctx: TurnContext) -> tuple[str, str, Refs, ContextMessage | None]
     system, user = messages[0]["content"], messages[1]["content"]
     lines = [system, "", NO_TOOLS_RULE]
     addressed = addressed_message(ctx)
-    if addressed is not None and (ref := refs.ref_for(addressed.id)):
+    replies = "reply" in ctx.allowed_actions
+    if addressed is not None and replies and (ref := refs.ref_for(addressed.id)):
         lines.append(
             f"7. The newest message, [{ref}], spoke to you directly. Answer it first, briefly, "
             f'as action "reply" with reply_to "{ref}".'

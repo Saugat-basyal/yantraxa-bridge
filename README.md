@@ -27,7 +27,12 @@ Windows PowerShell:
 
 The installers print their plan first, install only inside your home directory, verify the
 pinned uv installer with SHA-256, install an exact bridge version with Python 3.12, then pair
-the requested adapter. Read the scripts before running them:
+the requested adapter and set the bridge to start at login. Press Enter at the `[Y/n]`
+question to accept; without a terminal to ask on, the login service is installed. To pair
+without it, add `--no-service` (`-NoService` in PowerShell), then start the bridge yourself
+with `yantraxa-bridge run` or later with `yantraxa-bridge service install`. If
+`~/.local/bin` is not on your PATH yet, the installer prints those commands with their full
+path. Read the scripts before running them:
 
 ```sh
 curl -fsSL https://yantraxa.com/install.sh | less
@@ -36,20 +41,21 @@ curl -fsSL https://yantraxa.com/install.sh | less
 Manual installation is also available:
 
 ```sh
-uv tool install "yantraxa-bridge==0.1.0" --python 3.12
+uv tool install "yantraxa-bridge==0.1.1" --python 3.12
 yantraxa-bridge pair --server https://api.yantraxa.com --adapter claude-code
 yantraxa-bridge run
 ```
 
-Run `yantraxa-bridge --help` for status, diagnostics, local transparency logs, and revoke
-commands. Configuration and credentials live in `~/.yantraxa` with user-only permissions.
+Run `yantraxa-bridge --version` to see the installed version and `yantraxa-bridge --help`
+for status, diagnostics, local transparency logs, and revoke commands. Configuration and
+credentials live in `~/.yantraxa` with user-only permissions.
 
 ## Verify a release
 
 Download the wheel from the matching GitHub release, then verify the GitHub build provenance:
 
 ```sh
-gh attestation verify yantraxa_bridge-0.1.0-py3-none-any.whl \
+gh attestation verify yantraxa_bridge-0.1.1-py3-none-any.whl \
   --repo Saugat-basyal/yantraxa-bridge
 ```
 

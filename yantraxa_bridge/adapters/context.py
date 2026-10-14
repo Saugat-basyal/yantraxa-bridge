@@ -20,6 +20,9 @@ M5 adds three, also optional (`TurnRequestPayload` declares them):
   the seat has answered or passed a turn.
 - `open_motions`: `[{id, proposal_message_id, text, closes_at}]`. When sent, votes name
   these motions; otherwise (M4) they name open proposals as before.
+
+`allowed_actions` (bridge 0.1.1) says what the seat may do this turn; the prompt and the
+answer schema offer only those. A server that leaves it out allows every action.
 """
 
 from __future__ import annotations
@@ -213,4 +216,5 @@ def build_context(
         knowledge=_knowledge(request, meeting),
         deadline_at=deadline,
         max_output_chars=min(limit, MAX_TEXT_CHARS),
+        allowed_actions=list(request.allowed_actions),
     )

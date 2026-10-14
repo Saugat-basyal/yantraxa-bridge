@@ -474,3 +474,39 @@ async def test_the_turns_knowledge_is_kept_for_the_meeting(home):
             state = client.meetings[MEETING]
             assert state.turn_knowledge == KNOWLEDGE
             assert state.returns_summaries is True
+
+
+# ------------------------------------------------------------------ allowed_actions
+
+
+def test_allowed_actions_reach_the_context_and_its_json_only_when_limited():
+    io = FakeIO(meeting_state())
+    ctx = build_context(io.request, io.meeting, io.client, timeout_s=40)
+    assert ctx.allowed_actions == ["message", "question", "reply", "proposal", "pass"]
+    assert "allowed_actions" not in ctx.model_dump(mode="json")
+
+    io = FakeIO(meeting_state(), allowed_actions=["message", "reply", "pass"])
+    ctx = build_context(io.request, io.meeting, io.client, timeout_s=40)
+    assert ctx.allowed_actions == ["message", "reply", "pass"]
+    assert ctx.model_dump(mode="json")["allowed_actions"] == ["message", "reply", "pass"]
+
+
+async def test_a_disallowed_proposal_goes_out_as_a_message_with_the_same_text():
+    io = FakeIO(meeting_state(), allowed_actions=["message", "question", "reply", "pass"])
+    _, actions = await run_turn(
+        Scripted(say("Let's buy the roof.", "proposal"), streams=False), io=io
+    )
+    assert [(a.action, a.text) for a in actions] == [("message", "Let's buy the roof.")]
+
+
+async def test_a_disallowed_action_passes_when_messages_are_off_too():
+    io = FakeIO(meeting_state(), allowed_actions=["pass"])
+    _, actions = await run_turn(Scripted(say("Hello all."), streams=False), io=io)
+    assert actions == [TurnAction(action="pass")]
+    assert "responding" not in io.activities
+
+
+async def test_allowed_actions_go_out_unchanged():
+    io = FakeIO(meeting_state(), allowed_actions=["message", "reply", "pass"])
+    _, actions = await run_turn(Scripted(say("Agreed.", "reply"), streams=False), io=io)
+    assert [(a.action, a.text) for a in actions] == [("reply", "Agreed.")]

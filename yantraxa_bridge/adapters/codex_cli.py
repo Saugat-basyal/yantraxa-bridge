@@ -284,7 +284,7 @@ class CodexCliAdapter(CliAdapter):
             lambda turn_dir: codex_args(turn_dir, effort=self.effort, model=model),
             env=codex_env(self.codex_home, self.api_key),
             stdin=f"{system}\n\n{user}",
-            files={SCHEMA_FILE: json.dumps(strict_schema(output_schema()))},
+            files={SCHEMA_FILE: json.dumps(strict_schema(output_schema(ctx.allowed_actions)))},
             private_home=True,
         )
         timing = {"duration_s": round(result.duration_s, 2), "cli_version": version}

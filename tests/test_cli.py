@@ -185,3 +185,11 @@ def test_run_keeps_an_ignored_sighup_ignored_for_nohup(home, monkeypatch):
     finally:
         signal.signal(signal.SIGHUP, previous)
     assert cli._stop_signals() == (signal.SIGINT, signal.SIGTERM, signal.SIGHUP)
+
+
+def test_version_prints_the_version_and_exits_zero():
+    from yantraxa_bridge import __version__
+
+    result = runner.invoke(app, ["--version"])
+    assert result.exit_code == 0
+    assert result.output == f"yantraxa-bridge {__version__}\n"

@@ -448,3 +448,14 @@ async def test_a_left_behind_file_name_is_shortened_and_has_no_control_character
     [event] = read_events(home)
     assert event["pass_reason"] == "Codex left files behind: ]0;ownedPWNED.txt"
     assert "\x1b" not in caplog.text and "\x07" not in caplog.text
+
+
+async def test_a_turn_without_proposals_never_offers_one(codex, codex_home):
+    ctx = make_context(allowed_actions=["message", "question", "reply", "pass"])
+    await take(adapter(codex_home), ctx)
+    [call] = turns(codex)
+    schema = json.loads(call["files"]["schema.json"]["text"])
+    assert schema["properties"]["action"]["enum"] == ["message", "question", "reply", "pass"]
+    assert '"proposal"' not in " ".join(call["argv"])
+    assert '"proposal"' not in call["stdin"]
+    assert "Spend $400 on a new shed roof" in call["stdin"]

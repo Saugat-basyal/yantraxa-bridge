@@ -8,7 +8,7 @@ from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel, Field, model_serializer
 
-from ..protocol import AgendaEntry, TurnAction
+from ..protocol import ACTION_NAMES, ActionName, AgendaEntry, TurnAction
 
 # The most a single action's text may hold on the wire (`turnActionSchema`).
 MAX_TEXT_CHARS = 8192
@@ -139,15 +139,20 @@ class TurnContext(BaseModel):
     knowledge: Knowledge = Field(default_factory=Knowledge)
     deadline_at: str
     max_output_chars: int = Field(default=DEFAULT_MAX_OUTPUT_CHARS, gt=0, le=MAX_TEXT_CHARS)
+    # What the seat may do this turn (`turn_request.allowed_actions`); always has `pass`.
+    allowed_actions: list[ActionName] = Field(default_factory=lambda: list(ACTION_NAMES))
 
     @model_serializer(mode="wrap")
     def _drop_absent_m5(self, handler: Any) -> dict[str, Any]:
-        """Leave the M5 fields out when unset, so an M4 turn dumps as it always did
-        (the demo parity vectors and `personal_agent`'s JSON depend on it)."""
+        """Leave the M5 fields out when unset, and `allowed_actions` when it is every
+        action, so an M4 turn dumps as it always did (the demo parity vectors and
+        `personal_agent`'s JSON depend on it)."""
         data = handler(self)
         for key in ("open_motions", "briefing"):
             if data.get(key) is None:
                 data.pop(key, None)
+        if list(data.get("allowed_actions") or ()) == list(ACTION_NAMES):
+            data.pop("allowed_actions", None)
         return data
 
 

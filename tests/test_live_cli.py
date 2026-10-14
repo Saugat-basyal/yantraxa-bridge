@@ -123,6 +123,17 @@ async def test_a_rotation_turn_answers_in_the_schema(adapter):
     assert actions and actions[0].action in ("message", "question", "reply", "proposal", "pass")
 
 
+async def test_with_proposals_off_a_request_to_propose_gets_no_proposal(adapter):
+    """CN-8267: asked outright for a proposal, a turn that may not propose doesn't."""
+    ctx = make_context(allowed_actions=["message", "question", "reply", "pass"])
+    ctx.recent_messages.append(
+        said_to_me("@saugat.ai please put forward a formal proposal for the roof budget.")
+    )
+    attempt, actions, _ = await turn(adapter, ctx)
+    assert attempt.reason is None, attempt.reason
+    assert actions and actions[0].action in ctx.allowed_actions
+
+
 # ------------------------------------------------------------------ confinement probes
 
 

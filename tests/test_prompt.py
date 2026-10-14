@@ -282,3 +282,40 @@ def test_with_motions_a_vote_on_a_proposal_ref_names_its_motion_or_nothing():
     ctx = make_context(open_motions=[])
     action = _parse({"action": "message", "text": "Too dear.", "vote": vote}, ctx)
     assert action is not None and action.vote is None
+
+
+# ------------------------------------------------------------------ allowed_actions
+
+NO_PROPOSALS = ["message", "question", "reply", "pass"]
+
+
+def test_every_action_is_offered_when_the_server_does_not_say():
+    system, _, _ = _texts(make_context())
+    assert make_context().allowed_actions == ["message", "question", "reply", "proposal", "pass"]
+    assert '"proposal" (a concrete decision for the meeting)' in system
+    assert output_schema()["properties"]["action"]["enum"] == make_context().allowed_actions
+
+
+def test_the_schema_and_the_rules_follow_allowed_actions():
+    ctx = make_context(allowed_actions=NO_PROPOSALS)
+    system, _, _ = _texts(ctx)
+    assert output_schema(ctx.allowed_actions)["properties"]["action"]["enum"] == NO_PROPOSALS
+    assert '"proposal"' not in system
+    assert '"message" (a new point)' in system and '"reply" (answer one message' in system
+    assert '"pass" (nothing useful to add; text "")' in system
+
+
+def test_without_questions_an_unsure_agent_passes():
+    system, _, _ = _texts(make_context(allowed_actions=["message", "reply", "pass"]))
+    assert '"question"' not in system
+    assert "If you're unsure or lack the facts, pass instead of guessing." in system
+
+
+def test_a_pass_only_turn_offers_pass_and_no_vote():
+    ctx = make_context(allowed_actions=["pass"])
+    system, _, _ = _texts(ctx)
+    assert output_schema(ctx.allowed_actions)["properties"]["action"]["enum"] == ["pass"]
+    assert '"pass" (nothing useful to add; text ""), the only action this turn.' in system
+    assert "   - reply_to: null." in system and "   - vote: null." in system
+    for action in ('"message"', '"question"', '"reply"', '"proposal"'):
+        assert action not in system

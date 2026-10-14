@@ -52,6 +52,10 @@ SECRET_PATTERN = r"^[A-Za-z0-9_-]{1,128}$"
 MEETING_CODE_PATTERN = r"^[A-Z]{2}-\d{4}$"
 
 ActivityState = Literal["reading_agenda", "preparing", "responding"]
+ActionName = Literal["message", "question", "reply", "proposal", "pass"]
+# Every action, in the order the prompt lists them. `allowed_actions` defaults to all of
+# them, for servers that don't send it.
+ACTION_NAMES: tuple[ActionName, ...] = ("message", "question", "reply", "proposal", "pass")
 PostableKind = Literal["message", "question", "reply", "proposal"]
 ErrorCode = Literal[
     "bad_request",
@@ -141,7 +145,7 @@ class Vote(_Strict):
 class TurnAction(_Strict):
     """One step of a turn's answer; adapters (Task 4) produce this shape."""
 
-    action: Literal["message", "question", "reply", "proposal", "pass"]
+    action: ActionName
     text: str | None = Field(default=None, max_length=8192)
     reply_to: Uuid | None = None
     vote: Vote | None = None
@@ -305,6 +309,19 @@ class TurnRequestPayload(_Open):
     briefing: Any = None
     # M5: `[{id, proposal_message_id, text, closes_at}]`, the motions open for a vote.
     open_motions: Any = None
+    # What the seat may do this turn, from its permissions; the prompt and the answer
+    # schema offer only these. Absent (an older server): every action.
+    allowed_actions: list[ActionName] = Field(default_factory=lambda: list(ACTION_NAMES))
+
+    @field_validator("allowed_actions", mode="before")
+    @classmethod
+    def _known_actions(cls, value: Any) -> list[str]:
+        """Known actions in the usual order, plus `pass`, which a turn may always do.
+        Anything that isn't a list means every action; unknown names are dropped."""
+        if not isinstance(value, list):
+            return list(ACTION_NAMES)
+        named = {v for v in value if isinstance(v, str)}
+        return [a for a in ACTION_NAMES if a in named or a == "pass"]
 
 
 class MessageRow(BaseModel):

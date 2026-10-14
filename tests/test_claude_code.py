@@ -352,3 +352,17 @@ def test_pair_stops_before_the_server_when_preflight_fails(claude, home):
     assert result.exit_code == 1
     assert "not signed in" in result.output
     assert not (home / "credentials").exists()
+
+
+async def test_a_turn_without_proposals_never_offers_one(claude):
+    ctx = make_context(allowed_actions=["message", "question", "reply", "pass"])
+    await take(adapter(), ctx)
+    [call] = claude.calls()
+    argv = call["argv"]
+    schema = json.loads(argv[argv.index("--json-schema") + 1])
+    assert schema["properties"]["action"]["enum"] == ["message", "question", "reply", "pass"]
+    assert '"proposal"' not in " ".join(argv)
+    assert '"proposal"' not in call["stdin"]
+    assert '"proposal"' not in call["files"]["system.txt"]["text"]
+    # The meeting data still shows the open proposals, for votes.
+    assert "Spend $400 on a new shed roof" in call["stdin"]

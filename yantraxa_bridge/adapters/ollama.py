@@ -73,7 +73,7 @@ class OllamaAdapter:
             text = TextStream() if attempt == 1 else None
             raw = ""
             try:
-                async for delta in self._chat(messages):
+                async for delta in self._chat(messages, ctx.allowed_actions):
                     raw += delta
                     piece = text.feed(delta) if text else ""
                     if piece:
@@ -94,12 +94,12 @@ class OllamaAdapter:
             ]
         yield pass_turn()
 
-    async def _chat(self, messages: list[dict[str, str]]) -> AsyncIterator[str]:
+    async def _chat(self, messages: list[dict[str, str]], actions: list[str]) -> AsyncIterator[str]:
         body = {
             "model": self.model,
             "messages": messages,
             "stream": True,
-            "format": output_schema(),
+            "format": output_schema(actions),
             "options": {"num_predict": self.max_tokens},
         }
         async with self._client().stream("POST", self.url, json=body) as response:

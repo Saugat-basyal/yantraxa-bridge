@@ -7,6 +7,7 @@ import httpx
 import pytest
 import respx
 
+from yantraxa_bridge import __version__
 from yantraxa_bridge.client import (
     Backoff,
     BridgeClient,
@@ -124,7 +125,7 @@ async def test_authenticates_then_heartbeats(home):
         assert auth["payload"] == {
             "agent_id": "ag_abc234",
             "secret": SECRET,
-            "bridge_version": "0.1.0",
+            "bridge_version": __version__,
             "adapter_type": "ollama",
         }
         uuid.UUID(auth["id"])

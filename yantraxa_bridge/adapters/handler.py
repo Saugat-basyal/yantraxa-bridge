@@ -11,6 +11,10 @@ is whole when the redactor sees it. A PEM header, which contains spaces, is held
 until it is complete. Every chunk sent is a prefix of the redacted text; if that ever
 stops being true (a custom pattern spanning words), streaming stops for the turn and
 the final answer still arrives in full.
+
+An action the turn doesn't allow (`TurnContext.allowed_actions`) never goes out, whatever
+the model answered: it becomes a `message` with the same text when messages are allowed,
+and a pass otherwise. `downgraded` is told why, for the transparency log.
 """
 
 from __future__ import annotations
@@ -22,7 +26,7 @@ import re
 from ..client import TurnIO
 from ..protocol import TurnAction, TurnRequestPayload
 from ..redaction import Redactor
-from .base import MAX_TEXT_CHARS, Adapter, Chunk, Final
+from .base import MAX_TEXT_CHARS, Adapter, Chunk, Final, TurnContext
 from .context import build_context
 
 log = logging.getLogger("yantraxa_bridge.adapters.handler")
@@ -120,13 +124,33 @@ class AdapterTurnHandler:
             if aclose is not None:
                 await aclose()
 
-        actions = self._finish(answer, ctx.max_output_chars)
+        actions = self._finish(self._allowed(answer, ctx), ctx.max_output_chars)
         if actions[0].action != "pass":
             if not responding:
                 await io.activity("responding")
             elif piece := stream.flush(final=True):
                 await io.chunk(piece)
         return actions
+
+    def _allowed(self, answer: list[TurnAction] | None, ctx: TurnContext) -> list[TurnAction]:
+        """`answer` with every action the turn doesn't allow made a message or a pass."""
+        allowed = ctx.allowed_actions
+        kept = []
+        for action in answer or []:
+            if action.action in allowed:
+                kept.append(action)
+                continue
+            if "message" in allowed:
+                kept.append(action.model_copy(update={"action": "message", "reply_to": None}))
+                reason = f"{action.action} isn't allowed this turn; sent as a message"
+            else:
+                reason = f"{action.action} isn't allowed this turn; passed"
+            log.info("turn %s: %s", ctx.turn_id, reason)
+            self.downgraded(ctx, action, reason)
+        return kept
+
+    def downgraded(self, ctx: TurnContext, action: TurnAction, reason: str) -> None:
+        """Called for each action `_allowed` changed; the logged handler records it."""
 
     def _finish(self, answer: list[TurnAction] | None, limit: int) -> list[TurnAction]:
         """Redacted, non-empty actions; a pass when nothing usable is left."""

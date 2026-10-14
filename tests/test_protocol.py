@@ -195,3 +195,23 @@ def test_constants_mirror_the_server():
     assert protocol.MAX_FRAME_BYTES == 64 * 1024
     assert protocol.RATE_LIMIT_FRAMES == 30
     assert protocol.RATE_LIMIT_WINDOW_S == 10
+
+
+def _turn_request(**extra):
+    return protocol.TurnRequestPayload(
+        meeting_id=str(uuid.uuid4()), turn_id=str(uuid.uuid4()), **extra
+    )
+
+
+def test_allowed_actions_default_to_every_action_for_older_servers():
+    every = ["message", "question", "reply", "proposal", "pass"]
+    assert _turn_request().allowed_actions == every
+    assert _turn_request(allowed_actions=None).allowed_actions == every
+    assert _turn_request(allowed_actions="proposal").allowed_actions == every
+
+
+def test_allowed_actions_keep_known_names_in_order_and_always_pass():
+    request = _turn_request(allowed_actions=["pass", "reply", "message", "dance", 3])
+    assert request.allowed_actions == ["message", "reply", "pass"]
+    assert _turn_request(allowed_actions=[]).allowed_actions == ["pass"]
+    assert "allowed_actions" not in (request.model_extra or {})

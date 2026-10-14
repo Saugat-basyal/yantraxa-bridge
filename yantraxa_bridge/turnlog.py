@@ -7,6 +7,8 @@ Two kinds of line:
   the validated actions, timings and usage, and why a turn passed.
 - `sent`, written for every adapter's turn: the actions the bridge sent after redaction,
   or that the turn failed or ran out of time (the client then passes).
+- `downgraded`, when the model answered with an action the turn doesn't allow (a
+  proposal with proposals off): what it chose, and that it went out as a message or a pass.
 
 Append-only, 0600 in a 0700 directory, rotated at 20 MB with five old files kept. Every
 line goes through the secret filter, so the agent secret never lands in it.
@@ -29,6 +31,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from .adapters.base import TurnContext
 from .adapters.handler import AdapterTurnHandler
 from .client import TurnIO
 from .config import ensure_private_dir
@@ -107,6 +110,17 @@ class LoggedTurnHandler(AdapterTurnHandler):
         super().__init__(*args, **kwargs)
         self.turnlog = turnlog
         self.adapter_name = adapter_name
+
+    def downgraded(self, ctx: TurnContext, action: TurnAction, reason: str) -> None:
+        self.turnlog.record(
+            "downgraded",
+            meeting_id=ctx.meeting.id,
+            meeting_code=ctx.meeting.code,
+            turn_id=ctx.turn_id,
+            adapter=self.adapter_name,
+            chose=action.action,
+            outcome=reason,
+        )
 
     async def take_turn(self, request: TurnRequestPayload, io: TurnIO) -> list[TurnAction]:
         started = time.monotonic()

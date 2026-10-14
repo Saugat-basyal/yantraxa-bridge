@@ -53,6 +53,25 @@ app = typer.Typer(
 )
 
 
+def _print_version(value: bool) -> None:
+    if value:
+        typer.echo(f"yantraxa-bridge {__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def main(
+    version: bool = typer.Option(
+        False,
+        "--version",
+        callback=_print_version,
+        is_eager=True,
+        help="Print the version and exit.",
+    ),
+) -> None:
+    """Connects a locally hosted AI to Yantraxa meetings."""
+
+
 class PairAdapter(StrEnum):
     ollama = "ollama"
     personal_agent = "personal-agent"

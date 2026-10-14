@@ -13,22 +13,34 @@ turns vote on open proposals instead.
 On the seat's first turn the server sends a briefing (purpose, agenda notes, organiser,
 participants, earlier summaries); it goes inside the fence too, since organisers and
 other participants wrote it.
+
+The rules and the answer schema offer only the turn's `allowed_actions`: an agent whose
+owner turned proposals off is never told it can propose.
 """
 
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import Any
 
 from pydantic import ValidationError
 
 from .adapters.base import MAX_TEXT_CHARS, TurnContext
-from .protocol import TurnAction, Vote
+from .protocol import ACTION_NAMES, TurnAction, Vote
 
 FENCE_OPEN = "<<meeting_data>>"
 FENCE_CLOSE = "<</meeting_data>>"
-ACTIONS = ["message", "question", "reply", "proposal", "pass"]
+ACTIONS = list(ACTION_NAMES)
+# How the rules describe each action, in `ACTIONS` order.
+ACTION_RULES = {
+    "message": '"message" (a new point)',
+    "question": '"question"',
+    "reply": '"reply" (answer one message; set reply_to to its ref, like "m3")',
+    "proposal": '"proposal" (a concrete decision for the meeting)',
+    "pass": '"pass" (nothing useful to add; text "")',
+}
 # The server also takes yes/no, but a model is asked in these words (advisory votes).
 VOTE_CHOICES = ["support", "oppose", "abstain"]
 # How much meeting history a prompt carries. Small local models often run with a
@@ -45,15 +57,16 @@ PROMPT_SUMMARIES = 3
 PROMPT_OVERVIEW_CHARS = 400
 
 
-def output_schema() -> dict[str, Any]:
-    """The JSON schema the model must answer with (Ollama's `format`).
+def output_schema(actions: Sequence[str] = ACTION_NAMES) -> dict[str, Any]:
+    """The JSON schema the model must answer with (Ollama's `format`), for a turn that
+    may take `actions` (`TurnContext.allowed_actions`).
 
     `action` comes first so it is decided before the text streams.
     """
     return {
         "type": "object",
         "properties": {
-            "action": {"type": "string", "enum": ACTIONS},
+            "action": {"type": "string", "enum": [a for a in ACTIONS if a in actions]},
             "reply_to": {"type": ["string", "null"]},
             "text": {"type": "string"},
             "vote": {
@@ -162,9 +175,10 @@ def _system(ctx: TurnContext) -> str:
         if knowledge.restricted_categories
         else "None beyond these rules."
     )
+    allowed = ctx.allowed_actions
     unsure = (
         "ask one short question instead of guessing"
-        if knowledge.ask_when_uncertain
+        if knowledge.ask_when_uncertain and "question" in allowed
         else "pass instead of guessing"
     )
     facts = (
@@ -188,10 +202,10 @@ def _system(ctx: TurnContext) -> str:
             f"4. If you're unsure or lack the facts, {unsure}.",
             "5. Answer with one JSON object and nothing else: "
             '{"action": ..., "reply_to": ..., "text": ..., "vote": ...}.',
-            '   - action: "message" (a new point), "question", "reply" (answer one message; '
-            'set reply_to to its ref, like "m3"), "proposal" (a concrete decision for the '
-            'meeting), or "pass" (nothing useful to add; text "").',
-            "   - reply_to: a message ref, or null.",
+            f"   - action: {_either([ACTION_RULES[a] for a in ACTIONS if a in allowed])}.",
+            "   - reply_to: a message ref, or null."
+            if "reply" in allowed
+            else "   - reply_to: null.",
             _vote_rule(ctx),
             f"   - text: at most {ctx.max_output_chars} characters, one to three sentences, "
             "in your own voice.",
@@ -202,7 +216,15 @@ def _system(ctx: TurnContext) -> str:
     )
 
 
+def _either(choices: list[str]) -> str:
+    if len(choices) == 1:
+        return f"{choices[0]}, the only action this turn"
+    return ", ".join(choices[:-1]) + f", or {choices[-1]}"
+
+
 def _vote_rule(ctx: TurnContext) -> str:
+    if all(a == "pass" for a in ctx.allowed_actions):
+        return "   - vote: null."
     target = (
         'an open motion\'s ref, like "v1"'
         if ctx.open_motions is not None

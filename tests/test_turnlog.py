@@ -212,3 +212,16 @@ def test_a_key_after_a_line_break_or_tab_in_a_value_is_redacted_in_the_log(home,
     [event] = read_events(home)
     assert event["raw_output"] == f"here it is:{separator}{REDACTED}"
     assert event["actions"][0]["text"] == f"line one{separator}{REDACTED}"
+
+
+async def test_a_downgraded_action_is_logged_with_the_reason(home):
+    handler = logged(Scripted(say("Buy the roof.", "proposal"), streams=False), home)
+    io = FakeIO(meeting_state(), allowed_actions=["message", "question", "reply", "pass"])
+    actions = await handler.take_turn(io.request, io)
+    assert [a.action for a in actions] == ["message"]
+    downgraded, sent = read_events(home)
+    assert downgraded["event"] == "downgraded" and downgraded["chose"] == "proposal"
+    assert downgraded["outcome"] == "proposal isn't allowed this turn; sent as a message"
+    assert downgraded["turn_id"] == io.request.turn_id
+    assert sent["actions"][0]["action"] == "message"
+    assert format_event(downgraded).endswith("sent as a message")

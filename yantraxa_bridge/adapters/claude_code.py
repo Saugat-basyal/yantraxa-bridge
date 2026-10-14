@@ -19,11 +19,12 @@ more, on the full model, when there is time left. `--max-turns 1` stays as verif
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
 from ..caps import Caps
-from ..prompt import output_schema
+from ..prompt import ACTIONS, output_schema
 from ..turnlog import TurnLog
 from .base import TurnContext
 from .cli_runner import (
@@ -52,8 +53,11 @@ CLAUDE_ENV = {
 }
 
 
-def claude_args(turn_dir: Path, *, model: str, effort: str) -> list[str]:
-    """The confinement flags of spec §4.2, in its order. Nothing from the meeting is here."""
+def claude_args(
+    turn_dir: Path, *, model: str, effort: str, actions: Sequence[str] = ACTIONS
+) -> list[str]:
+    """The confinement flags of spec §4.2, in its order. Nothing from the meeting is here;
+    the schema offers only the turn's `actions`."""
     return [
         "-p",
         "--output-format", "json",
@@ -69,7 +73,7 @@ def claude_args(turn_dir: Path, *, model: str, effort: str) -> list[str]:
         "--model", model,
         "--effort", effort,
         "--system-prompt-file", str(turn_dir / SYSTEM_FILE),
-        "--json-schema", json.dumps(output_schema(), separators=(",", ":")),
+        "--json-schema", json.dumps(output_schema(actions), separators=(",", ":")),
     ]  # fmt: skip
 
 
@@ -166,20 +170,25 @@ class ClaudeCodeAdapter(CliAdapter):
         self, ctx: TurnContext, system: str, user: str, model: str | None
     ) -> Attempt:
         budget = self.runner.timeout_s
-        attempt = await self._run(system, user, model or self.model_full, budget)
+        actions = ctx.allowed_actions
+        attempt = await self._run(system, user, model or self.model_full, budget, actions)
         spent = attempt.details.get("duration_s", budget)
         if attempt.details.get("subtype") == RETRY_SUBTYPE and spent < budget / 2:
-            retry = await self._run(system, user, self.model_full, budget - spent)
+            retry = await self._run(system, user, self.model_full, budget - spent, actions)
             retry.details["retried"] = attempt.reason
             retry.details["retry_model"] = self.model_full
             retry.details["duration_s"] = round(spent + retry.details.get("duration_s", 0), 2)
             return retry
         return attempt
 
-    async def _run(self, system: str, user: str, model: str, timeout_s: float) -> Attempt:
+    async def _run(
+        self, system: str, user: str, model: str, timeout_s: float, actions: Sequence[str]
+    ) -> Attempt:
         result = await self.runner.run(
             self.command,
-            lambda turn_dir: claude_args(turn_dir, model=model, effort=self.effort),
+            lambda turn_dir: claude_args(
+                turn_dir, model=model, effort=self.effort, actions=actions
+            ),
             env=claude_env(self.api_key),
             stdin=user,
             files={SYSTEM_FILE: system},

@@ -173,3 +173,12 @@ def test_text_stream_waits_for_the_action_and_ignores_a_pass():
 def test_text_stream_ignores_text_inside_other_values():
     pieces = ['{"action": "message", "reply_to": "\\"text\\": \\"no\\"", "text": "yes"}']
     assert feed_all(pieces) == "yes"
+
+
+@respx.mock
+async def test_the_format_offers_only_the_allowed_actions():
+    route = respx.post(CHAT).mock(return_value=httpx.Response(200, content=ndjson(GOOD)))
+    await collect(adapter(), make_context(allowed_actions=["message", "reply", "pass"]))
+    body = json.loads(route.calls[0].request.content)
+    assert body["format"]["properties"]["action"]["enum"] == ["message", "reply", "pass"]
+    assert '"proposal"' not in body["messages"][0]["content"]

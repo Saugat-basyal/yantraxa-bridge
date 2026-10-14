@@ -8,6 +8,7 @@ import httpx
 import pytest
 import respx
 
+from yantraxa_bridge import __version__
 from yantraxa_bridge.config import load_config
 from yantraxa_bridge.credentials import load_credentials, load_or_create_public_key
 from yantraxa_bridge.pairing import PairingError, PairingExpired, fingerprint, pair
@@ -66,7 +67,7 @@ async def test_pair_happy_path(home):
     public_key = load_or_create_public_key()
     assert body == {
         "public_key": public_key,
-        "bridge_version": "0.1.0",
+        "bridge_version": __version__,
         "adapter_type": "personal_agent",
         "host_label": "lab-box",
     }
