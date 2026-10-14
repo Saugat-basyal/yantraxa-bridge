@@ -1,0 +1,5297 @@
+{
+  "cases": [
+    {
+      "name": "default",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Spend $400 on a new shed roof",
+            "author": "Priya",
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Spend $400 on a new shed roof\": it's concrete enough to act on for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting no on \"Spend $400 on a new shed roof\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Spend $400 on a new shed roof\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_with_message",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "proposal",
+            "body": "Spend $400 on a new shed roof",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Spend $400 on a new shed roof",
+            "author": null,
+            "message_id": "11111111-1111-4111-8111-111111111111"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on \"Spend $400 on a new shed roof\": it's concrete enough to act on for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting no on \"Spend $400 on a new shed roof\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on \"Spend $400 on a new shed roof\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_plain_words",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Ask the council for help",
+            "author": null,
+            "message_id": "11111111-1111-4111-8111-111111111111"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Abstaining on \"Ask the council for help\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Abstaining on \"Ask the council for help\" until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on \"Ask the council for help\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_money_word_only",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Split the COST with the school",
+            "author": null,
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Abstaining on \"Split the COST with the school\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting no on \"Split the COST with the school\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Split the COST with the school\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_word_boundary",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "A costly, overpaid, unbudgeted plan",
+            "author": null,
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Abstaining on \"A costly, overpaid, unbudgeted plan\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Abstaining on \"A costly, overpaid, unbudgeted plan\" until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"A costly, overpaid, unbudgeted plan\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_unicode_digit_and_case",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Fix it by week ² and PRİCE it",
+            "author": null,
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Fix it by week ² and PRİCE it\": it's concrete enough to act on for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting no on \"Fix it by week ² and PRİCE it\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Fix it by week ² and PRİCE it\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_arabic_digit",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Meet on day ٣ about the café",
+            "author": null,
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Meet on day ٣ about the café\": it's concrete enough to act on for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Abstaining on \"Meet on day ٣ about the café\" until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Meet on day ٣ about the café\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_long_s",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Who pays the coſts?",
+            "author": null,
+            "message_id": null
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Abstaining on \"Who pays the coſts\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting no on \"Who pays the coſts\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Voting yes on \"Who pays the coſts\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_empty_message_id",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Paint it green",
+            "author": null,
+            "message_id": ""
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": "",
+          "text": "Abstaining on \"Paint it green\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": "",
+          "text": "Abstaining on \"Paint it green\" until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": "",
+          "text": "Voting yes on \"Paint it green\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "two_proposals_latest_wins",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Spend $400 on a new shed roof",
+            "author": null,
+            "message_id": "11111111-1111-4111-8111-111111111111"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "text": "Patch the roof with tarp",
+            "author": null,
+            "message_id": "22222222-2222-4222-8222-222222222222"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Abstaining on \"Patch the roof with tarp\" until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "22222222-2222-4222-8222-222222222222",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Abstaining on \"Patch the roof with tarp\" until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "22222222-2222-4222-8222-222222222222",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Voting yes on \"Patch the roof with tarp\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "22222222-2222-4222-8222-222222222222",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Re \"Can we afford $400 for a new roof...\": doable for Tool shed repairs if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Re \"Can we afford $400 for a new roof...\": for Tool shed repairs I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "22222222-2222-4222-8222-222222222222",
+          "text": "Re \"Can we afford $400 for a new roof...\": for Tool shed repairs, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "empty_room",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "only_my_messages",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c",
+            "author": "you",
+            "kind": "message",
+            "body": "I said something earlier.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "my_message_after_theirs",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "We could borrow ladders from the school.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c",
+            "author": "you",
+            "kind": "question",
+            "body": "Good idea?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"We could borrow ladders from the school\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"We could borrow ladders from the school\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"We could borrow ladders from the school\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "We could borrow ladders from the school.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"We could borrow ladders from the school\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"We could borrow ladders from the school\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"We could borrow ladders from the school\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "system_last",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "system",
+            "body": "Agenda item started.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Tool shed repairs: we go with \"Agenda item started\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Agenda item started\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Agenda item started\". For Tool shed repairs, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "long_message",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word ",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"word word word word word word word word...\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"word word word word word word word word...\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"word word word word word word word word...\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "long_unbroken_word",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "exactly_eighty",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "trailing_punctuation_cut",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "We need more hands, We need more hands, We need more hands, and; more: tools?! and; more: tools?! and; more: tools?! and; more: tools?! ",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"We need more hands, We need more hands...\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"We need more hands, We need more hands...\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"We need more hands, We need more hands...\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "odd_whitespace",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "\tLadders from the\u001cschool,　please now\n\n",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Ladders from the school, please now\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Ladders from the school, please now\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"Ladders from the school, please now\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "astral_characters",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 seeds for the spring beds",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "quote_chain",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Re \"\"Building on \"We have the library's community room on 14 March for 40 people\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.\"...\": for Tool shed repairs I'd want a costed quote first.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"I'd want a costed quote first\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"I'd want a costed quote first\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: \"I'd want a costed quote first\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "quote_chain_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Re \"\"Building on \"We have the library's community room on 14 March for 40 people\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.\"...\": for Tool shed repairs I'd want a costed quote first. Who pays?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "On Tool shed repairs, re \"I'd want a costed quote first. Who pays\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Re \"I'd want a costed quote first. Who pays\": for Tool shed repairs I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "On Tool shed repairs, re \"I'd want a costed quote first. Who pays\": let's check with the people it affects most, then decide.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "nothing_left_to_quote",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Re \"x\":",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "nothing_left_no_author",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": " ",
+            "kind": "message",
+            "body": "\"...\"",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on that point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "That point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: that point could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "curly_and_short_quotes",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "We call it “the hub”, says “the whole street, every one”.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "proposal_quoting_a_proposal",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Building on \"Spend $400 on a new shed roof\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+            "author": null,
+            "message_id": "11111111-1111-4111-8111-111111111111"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on \"let's run it as a two-week trial with...\": it's concrete enough to act on for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting no on \"let's run it as a two-week trial with...\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "no"
+          }
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on \"let's run it as a two-week trial with...\": it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "proposal_nothing_left",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "The shed roof leaks onto the seed trays.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Can we afford $400 for a new roof this month?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:01:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "Re \"x\":",
+            "author": null,
+            "message_id": "11111111-1111-4111-8111-111111111111"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Abstaining on the proposal until it has an owner and a date for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Abstaining on the proposal until we know what it costs for Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "abstain"
+          }
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "11111111-1111-4111-8111-111111111111",
+          "text": "Voting yes on the proposal: it gets people working together on Tool shed repairs.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "no_agenda_item",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": null,
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "no_agenda_at_all",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": []
+        },
+        "agenda_item": null,
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Community garden spring budget concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Community garden spring budget, I'd like a costed option on the table before we commit.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Community garden spring budget: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "no_titles",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": null,
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": []
+        },
+        "agenda_item": null,
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On this item: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on this item: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For this item, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_00_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 0: Compost"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 0: Compost: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 0: Compost: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 0: Compost: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_00_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 0: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000000-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 0: we share the item 0: compost rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 0: we share the item 0: compost...\": for Item 0: Compost, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 0: Compost: who pays for \"Option 0: we share the item 0: compost...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Item 0: Compost: \"Option 0: we share the item 0: compost...\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_00_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 0: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000000-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 0: Compost?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000000-1111-4111-8111-111111111111",
+          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000000-1111-4111-8111-111111111111",
+          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000000-1111-4111-8111-111111111111",
+          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": let's check with the people it affects most, then decide.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_01_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 1: Water butts"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Item 1: Water butts concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 1: Water butts: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 1: Water butts: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_01_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 1: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000001-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 1: we share the item 1: water butts rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Item 1: Water butts: we go with \"Option 1: we share the item 1: water...\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 1: we share the item 1: water...\" - what would that cost for Item 1: Water butts, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 1: we share the item 1: water...\". For Item 1: Water butts, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_01_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 1: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000001-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 1: Water butts?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000001-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 1: Water butts\": doable for Item 1: Water butts if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000001-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 1: Water butts\": for Item 1: Water butts I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000001-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 1: Water butts\": for Item 1: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_02_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 2: Fences"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Item 2: Fences concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 2: Fences: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 2: Fences: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_02_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 2: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "00000002-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 2: we share the item 2: fences rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 2: we share the item 2: fences...\": for Item 2: Fences, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 2: Fences: who pays for \"Option 2: we share the item 2: fences...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 2: we share the item 2: fences...\". For Item 2: Fences, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_02_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 2: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "00000002-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 2: Fences?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000002-1111-4111-8111-111111111111",
+          "text": "On Item 2: Fences, re \"Who leads Item 2: Fences\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000002-1111-4111-8111-111111111111",
+          "text": "On Item 2: Fences, re \"Who leads Item 2: Fences\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000002-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 2: Fences\": for Item 2: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_03_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 3: Bees"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 3: Bees: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 3: Bees: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 3: Bees, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_03_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 3: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "00000003-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 3: we share the item 3: bees rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Item 3: Bees: we go with \"Option 3: we share the item 3: bees...\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 3: we share the item 3: bees...\" - what would that cost for Item 3: Bees, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 3: we share the item 3: bees...\". For Item 3: Bees, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_03_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 3: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "00000003-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 3: Bees?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000003-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 3: Bees\": doable for Item 3: Bees if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000003-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 3: Bees\": for Item 3: Bees I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000003-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 3: Bees\": for Item 3: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_04_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 4: Compost"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 4: Compost: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 4: Compost: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 4: Compost, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_04_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 4: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000004-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 4: we share the item 4: compost rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Item 4: Compost: we go with \"Option 4: we share the item 4: compost...\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 4: Compost: who pays for \"Option 4: we share the item 4: compost...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Item 4: Compost: \"Option 4: we share the item 4: compost...\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_04_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 4: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000004-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 4: Compost?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000004-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 4: Compost\": doable for Item 4: Compost if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000004-1111-4111-8111-111111111111",
+          "text": "On Item 4: Compost, re \"Who leads Item 4: Compost\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000004-1111-4111-8111-111111111111",
+          "text": "On Item 4: Compost, re \"Who leads Item 4: Compost\": let's check with the people it affects most, then decide.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_05_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 5: Water butts"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Item 5: Water butts concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 5: Water butts, I'd like a costed option on the table before we commit.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 5: Water butts: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_05_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 5: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000005-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 5: we share the item 5: water butts rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 5: we share the item 5: water...\": for Item 5: Water butts, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 5: we share the item 5: water...\" - what would that cost for Item 5: Water butts, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 5: we share the item 5: water...\". For Item 5: Water butts, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_05_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 5: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000005-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 5: Water butts?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000005-1111-4111-8111-111111111111",
+          "text": "On Item 5: Water butts, re \"Who leads Item 5: Water butts\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000005-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 5: Water butts\": for Item 5: Water butts I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000005-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 5: Water butts\": for Item 5: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_06_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 6: Fences"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 6: Fences: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 6: Fences: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 6: Fences, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_06_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 6: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "00000006-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 6: we share the item 6: fences rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Item 6: Fences: we go with \"Option 6: we share the item 6: fences...\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 6: we share the item 6: fences...\" - what would that cost for Item 6: Fences, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 6: we share the item 6: fences...\". For Item 6: Fences, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_06_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 6: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "00000006-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 6: Fences?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000006-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 6: Fences\": doable for Item 6: Fences if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000006-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 6: Fences\": for Item 6: Fences I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000006-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 6: Fences\": for Item 6: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_07_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 7: Bees"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Item 7: Bees concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 7: Bees: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 7: Bees: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_07_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 7: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "00000007-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 7: we share the item 7: bees rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 7: we share the item 7: bees...\": for Item 7: Bees, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 7: Bees: who pays for \"Option 7: we share the item 7: bees...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 7: we share the item 7: bees...\". For Item 7: Bees, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_07_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 7: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "00000007-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 7: Bees?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000007-1111-4111-8111-111111111111",
+          "text": "On Item 7: Bees, re \"Who leads Item 7: Bees\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000007-1111-4111-8111-111111111111",
+          "text": "On Item 7: Bees, re \"Who leads Item 7: Bees\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000007-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 7: Bees\": for Item 7: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_08_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 8: Compost"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 8: Compost: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 8: Compost, I'd like a costed option on the table before we commit.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 8: Compost: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_08_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 8: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000008-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 8: we share the item 8: compost rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 8: we share the item 8: compost...\": for Item 8: Compost, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 8: we share the item 8: compost...\" - what would that cost for Item 8: Compost, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On Item 8: Compost: \"Option 8: we share the item 8: compost...\" could bring people together if we share the work.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_08_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 8: Compost"
+        },
+        "recent_messages": [
+          {
+            "id": "00000008-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 8: Compost?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000008-1111-4111-8111-111111111111",
+          "text": "On Item 8: Compost, re \"Who leads Item 8: Compost\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000008-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 8: Compost\": for Item 8: Compost I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000008-1111-4111-8111-111111111111",
+          "text": "On Item 8: Compost, re \"Who leads Item 8: Compost\": let's check with the people it affects most, then decide.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_09_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 9: Water butts"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 9: Water butts: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Before we decide anything on Item 9: Water butts: what does it cost in total, and what's the cheapest option that works?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 9: Water butts, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_09_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 9: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000009-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 9: we share the item 9: water butts rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "For Item 9: Water butts: we go with \"Option 9: we share the item 9: water...\" now and check back at the next meeting.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 9: Water butts: who pays for \"Option 9: we share the item 9: water...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 9: we share the item 9: water...\". For Item 9: Water butts, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_09_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 9: Water butts"
+        },
+        "recent_messages": [
+          {
+            "id": "00000009-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 9: Water butts?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "00000009-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 9: Water butts\": doable for Item 9: Water butts if we pick one option now and revisit later.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "00000009-1111-4111-8111-111111111111",
+          "text": "On Item 9: Water butts, re \"Who leads Item 9: Water butts\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "00000009-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 9: Water butts\": for Item 9: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_10_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 10: Fences"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Let's keep Item 10: Fences concrete: one owner, one date, one next step.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 10: Fences, I'd like a costed option on the table before we commit.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 10: Fences, let's make sure everyone affected has a say before we settle it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_10_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 10: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "0000000a-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 10: we share the item 10: fences rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 10: we share the item 10: fences...\": for Item 10: Fences, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 10: Fences: who pays for \"Option 10: we share the item 10: fences...\", and what do we drop to afford it?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 10: we share the item 10: fences...\". For Item 10: Fences, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_10_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 10: Fences"
+        },
+        "recent_messages": [
+          {
+            "id": "0000000a-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 10: Fences?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "0000000a-1111-4111-8111-111111111111",
+          "text": "On Item 10: Fences, re \"Who leads Item 10: Fences\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "0000000a-1111-4111-8111-111111111111",
+          "text": "On Item 10: Fences, re \"Who leads Item 10: Fences\": only if it fits the budget we already have.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "0000000a-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 10: Fences\": for Item 10: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_11_opener",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 11: Bees"
+        },
+        "recent_messages": [],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 11: Bees: what's the smallest step we can agree today, and who owns it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "For Item 11: Bees, I'd like a costed option on the table before we commit.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "On Item 11: Bees: who else should we bring in before we decide?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_11_statement",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 11: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "0000000b-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "message",
+            "body": "Option 11: we share the item 11: bees rota.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on \"Option 11: we share the item 11: bees...\": for Item 11: Bees, let's run it as a two-week trial with one owner, then review.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "\"Option 11: we share the item 11: bees...\" - what would that cost for Item 11: Bees, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "I like \"Option 11: we share the item 11: bees...\". For Item 11: Bees, let's invite the wider group to help.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "spread_11_question",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Item 11: Bees"
+        },
+        "recent_messages": [
+          {
+            "id": "0000000b-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "kind": "question",
+            "body": "Who leads Item 11: Bees?",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "reply",
+          "reply_to": "0000000b-1111-4111-8111-111111111111",
+          "text": "On Item 11: Bees, re \"Who leads Item 11: Bees\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "reply",
+          "reply_to": "0000000b-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 11: Bees\": for Item 11: Bees I'd want a costed quote first, and a cap we won't exceed.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "reply",
+          "reply_to": "0000000b-1111-4111-8111-111111111111",
+          "text": "Re \"Who leads Item 11: Bees\": for Item 11: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "vote": null
+        }
+      }
+    }
+  ]
+}
