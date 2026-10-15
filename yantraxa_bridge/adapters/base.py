@@ -46,6 +46,9 @@ class ContextMessage(BaseModel):
     id: str
     seat_id: str
     author: str
+    # `human` or `agent` when the server's participants say; demo personas name an
+    # agent's point rather than quoting it.
+    author_kind: Literal["human", "agent"] | None = None
     kind: Literal["message", "question", "reply", "proposal", "system"]
     body: str
     reply_to: str | None = None

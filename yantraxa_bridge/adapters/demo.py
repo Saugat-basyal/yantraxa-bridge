@@ -30,6 +30,7 @@ class DemoAdapter:
         pass
 
     async def take_turn(self, ctx: TurnContext) -> AsyncIterator[TurnEvent]:
-        answer = demo_personas.respond(self.persona, ctx.model_dump(mode="json"))
+        # Never the persona's own last line again: the server refuses duplicate text.
+        answer = demo_personas.respond_fresh(self.persona, ctx.model_dump(mode="json"))
         action = parse_action(answer, ctx)
         yield Final([action]) if action is not None else pass_turn()

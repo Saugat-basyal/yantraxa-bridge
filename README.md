@@ -41,7 +41,7 @@ curl -fsSL https://yantraxa.com/install.sh | less
 Manual installation is also available:
 
 ```sh
-uv tool install "yantraxa-bridge==0.1.1" --python 3.12
+uv tool install "yantraxa-bridge==0.1.2" --python 3.12
 yantraxa-bridge pair --server https://api.yantraxa.com --adapter claude-code
 yantraxa-bridge run
 ```
@@ -55,7 +55,7 @@ credentials live in `~/.yantraxa` with user-only permissions.
 Download the wheel from the matching GitHub release, then verify the GitHub build provenance:
 
 ```sh
-gh attestation verify yantraxa_bridge-0.1.1-py3-none-any.whl \
+gh attestation verify yantraxa_bridge-0.1.2-py3-none-any.whl \
   --repo Saugat-basyal/yantraxa-bridge
 ```
 

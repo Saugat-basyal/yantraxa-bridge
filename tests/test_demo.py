@@ -49,7 +49,8 @@ async def test_an_open_proposal_gets_a_vote(persona):
     assert action.vote is not None
     assert action.vote.motion_id == P1
     assert action.vote.choice in {"yes", "no", "abstain"}
-    assert "Spend $400 on a new shed roof" in action.text
+    # A vote doesn't quote the proposal: it's one of the persona's lines for its choice.
+    assert action.text in demo_personas.VOTE_LINES[persona][action.vote.choice]
     # The proposal's message isn't known here, so the vote rides on a plain message.
     assert action.action == "message" and action.reply_to is None
 
@@ -66,32 +67,31 @@ async def test_a_vote_replies_to_the_proposal_message_when_known():
 
 
 @pytest.mark.parametrize("persona", demo_personas.PERSONAS)
-async def test_a_question_gets_a_reply_naming_the_agenda_item_and_the_question(persona):
-    ctx = make_context(open_proposals=[])
-    action = await take(persona, ctx)
+async def test_a_question_gets_a_reply(persona):
+    action = await take(persona, make_context(open_proposals=[]))
     assert action.action == "reply"
     assert action.reply_to == M2
-    assert "Tool shed repairs" in action.text
-    assert "afford $400" in action.text
+    assert action.text in demo_personas.REPLIES[persona]
 
 
 @pytest.mark.parametrize("persona", demo_personas.PERSONAS)
-async def test_an_empty_room_gets_an_opener(persona):
+async def test_an_empty_room_gets_an_opener_naming_the_agenda_item(persona):
     action = await take(persona, make_context(open_proposals=[], recent_messages=[]))
     assert action.action in {"message", "question"}
     assert action.reply_to is None
-    assert "Tool shed repairs" in action.text
+    assert "\u201cTool shed repairs\u201d" in action.text
 
 
 @pytest.mark.parametrize("persona", demo_personas.PERSONAS)
-async def test_a_statement_quotes_the_last_message(persona):
+async def test_a_statement_quotes_a_person_or_names_them(persona):
     ctx = make_context(
         open_proposals=[], recent_messages=[message(M1, "We could borrow ladders from the school.")]
     )
     action = await take(persona, ctx)
     assert action.action in {"message", "question", "proposal"}
-    assert "borrow ladders" in action.text
-    assert "Tool shed repairs" in action.text
+    assert '"' not in action.text
+    if "\u201c" in action.text:
+        assert "\u201cWe could borrow ladders from the school\u201d" in action.text
 
 
 async def test_long_last_messages_are_shortened():
@@ -130,11 +130,139 @@ def test_quotes_drop_earlier_quotes(body, quote):
 
 def test_a_message_with_nothing_left_to_quote_names_the_speaker():
     ctx = make_context(open_proposals=[], recent_messages=[message(M1, 'Re "x":')])
-    texts = {
-        demo_personas.respond(p, ctx.model_dump(mode="json"))["text"]
-        for p in demo_personas.PERSONAS
+    for persona in demo_personas.PERSONAS:
+        text = demo_personas.respond(persona, ctx.model_dump(mode="json"))["text"]
+        if "point" in text:
+            assert "Priya's point" in text
+        assert not re.search('["\u201c\u201d]', text), text
+
+
+def test_a_person_is_quoted_in_curly_quotes_cut_with_an_ellipsis_and_an_agent_only_named():
+    def said(author_kind):
+        return demo_personas.respond(
+            "pragmatist",
+            {
+                "me": {"seat_id": "me"},
+                "agenda_item": {"title": "Venue and date"},
+                "recent_messages": [
+                    {
+                        "id": "m1",
+                        "seat_id": "s1",
+                        "author": "Priya",
+                        "author_kind": author_kind,
+                        "kind": "message",
+                        "body": "Town Hall on 14 March with a $2,000 cap, for 120 people",
+                    }
+                ],
+            },
+        )["text"]
+
+    assert "\u201cTown Hall on 14 March with a $2,000\u2026\u201d" in said("human")
+    assert "Priya's point" in said("agent")
+    assert not re.search("[\u201c\u201d]", said("agent"))
+
+
+async def test_the_adapter_names_another_agents_point_instead_of_quoting_it():
+    agent_message = message(M1, "We could borrow ladders from the school.").model_copy(
+        update={"author": "Ana's agent", "author_kind": "agent"}
+    )
+    action = await take(
+        "pragmatist", make_context(open_proposals=[], recent_messages=[agent_message])
+    )
+    assert "Ana's agent's point" in action.text
+    assert "borrow ladders" not in action.text
+
+
+def test_a_short_message_is_quoted_back_whole():
+    ctx = {
+        "me": {"seat_id": "me"},
+        "agenda_item": {"title": "Spring fair"},
+        "recent_messages": [
+            {
+                "id": "m7",
+                "seat_id": "s1",
+                "author": "Priya",
+                "kind": "message",
+                "body": "Let's book the library hall.",
+            },
+        ],
     }
-    assert all("Priya's point" in t and '"' not in t for t in texts), texts
+    for persona in demo_personas.PERSONAS:
+        for n in range(4):
+            mine_now = {
+                "id": f"x{n}",
+                "seat_id": "me",
+                "author": "you",
+                "kind": "message",
+                "body": f"turn {n}",
+            }
+            turn = {**ctx, "recent_messages": [*ctx["recent_messages"], mine_now]}
+            text = demo_personas.respond_fresh(persona, turn)["text"]
+            if "\u201c" in text:
+                assert "\u201cLet's book the library hall\u201d" in text
+
+
+def test_the_topic_is_named_once_in_curly_quotes_or_this_when_there_is_none():
+    for persona in demo_personas.PERSONAS:
+        named = demo_personas.respond(persona, {"agenda_item": {"title": "Topic shortlist"}})
+        assert "\u201cTopic shortlist\u201d" in named["text"]
+        unnamed = demo_personas.respond(persona, {})["text"]
+        assert re.search(r"\bthis\b", unnamed)
+        assert not re.search('["\u201c\u201d]', unnamed)
+
+
+def test_a_persona_backs_its_own_proposal_without_replying_to_itself():
+    ctx = {
+        "me": {"seat_id": "me"},
+        "agenda_item": {"title": "Topic shortlist"},
+        "recent_messages": [
+            {
+                "id": "m1",
+                "seat_id": "s1",
+                "author": "Priya",
+                "kind": "message",
+                "body": "We could start with the hall.",
+            },
+            {
+                "id": "m2",
+                "seat_id": "me",
+                "author": "you",
+                "kind": "proposal",
+                "body": "I propose we book the hall.",
+            },
+        ],
+        "open_proposals": [
+            {"id": "mo1", "text": "I propose we book the hall.", "message_id": "m2"}
+        ],
+    }
+    for persona in demo_personas.PERSONAS:
+        answer = demo_personas.respond(persona, ctx)
+        assert answer["vote"] == {"motion_id": "mo1", "choice": "yes"}
+        assert answer["reply_to"] is None
+        assert answer["action"] == "message"
+        assert re.search(r"my (own )?proposal", answer["text"])
+    # Someone else's proposal still gets a vote, replying to it.
+    theirs = {
+        **ctx,
+        "recent_messages": [
+            *ctx["recent_messages"],
+            {
+                "id": "m3",
+                "seat_id": "s1",
+                "author": "Priya",
+                "kind": "proposal",
+                "body": "Book it for 14 March.",
+            },
+        ],
+        "open_proposals": [
+            *ctx["open_proposals"],
+            {"id": "mo2", "text": "Book it for 14 March.", "message_id": "m3"},
+        ],
+    }
+    for persona in demo_personas.PERSONAS:
+        answer = demo_personas.respond(persona, theirs)
+        assert answer["vote"]["motion_id"] == "mo2"
+        assert answer["reply_to"] == "m3"
 
 
 def test_demo_agents_replying_to_each_other_never_nest_quotes():
@@ -185,9 +313,95 @@ def test_demo_agents_replying_to_each_other_never_nest_quotes():
         texts.append(answer["text"])
     assert len(texts) >= 6
     for text in texts:
-        assert text.count('"') <= 2, text
-        assert not re.search(r'(Re|Building on|re) "+(Re|Building on|On|")', text), text
-        assert "..." not in text or text.count("...") == 1, text
+        assert len(re.findall('["\u201c\u201d]', text)) <= 2, text
+        assert not re.search('(Re|Building on|re) ["\u201c]+(Re|Building on|On|["\u201c])', text)
+
+
+@pytest.mark.parametrize("persona", demo_personas.PERSONAS)
+def test_a_lone_demo_agent_never_repeats_its_own_last_line(persona):
+    meeting = {"title": "Garden day", "agenda": [{"title": "Tools"}]}
+    ctx = {"me": {"seat_id": "me"}, "meeting": meeting, "agenda_item": {"title": "Tools"}}
+    opener = demo_personas.respond(persona, ctx)
+    # Nobody else speaks, so `respond` gives the same opener every turn.
+    again = {
+        **ctx,
+        "recent_messages": [
+            {
+                "id": "m1",
+                "seat_id": "me",
+                "author": "you",
+                "kind": "message",
+                "body": opener["text"],
+            }
+        ],
+    }
+    assert demo_personas.respond(persona, again)["text"] == opener["text"]
+    fresh = demo_personas.respond_fresh(persona, again)
+    assert fresh["text"] != opener["text"]
+    assert "\u201cTools\u201d" in fresh["text"]
+    # With nothing of its own said yet, it answers exactly as `respond` does.
+    assert demo_personas.respond_fresh(persona, ctx) == opener
+    # A third turn, after the second line, may go back to the first.
+    third = {
+        **ctx,
+        "recent_messages": [
+            *again["recent_messages"],
+            {
+                "id": "m2",
+                "seat_id": "me",
+                "author": "you",
+                "kind": "message",
+                "body": fresh["text"],
+            },
+        ],
+    }
+    assert demo_personas.respond_fresh(persona, third)["text"] != fresh["text"]
+
+
+@pytest.mark.parametrize("persona", demo_personas.PERSONAS)
+@pytest.mark.parametrize("own", [False, True])
+def test_a_vote_line_is_never_repeated_across_a_meetings_proposals(persona, own):
+    meeting = {"title": "Launch", "agenda": [{"title": "Plan"}]}
+    recent: list[dict] = []
+    said = []
+    for n in range(1, 5):
+        # Pragmatist and Budget hawk each answer a costed, dated proposal one way.
+        proposal = {"id": f"motion-{n}", "message_id": f"p{n}", "text": f"Spend ${n}00 on day {n}"}
+        recent.append(
+            {
+                "id": f"p{n}",
+                "seat_id": "me" if own else "them",
+                "author": "Ana",
+                "kind": "proposal",
+                "body": proposal["text"],
+            }
+        )
+        ctx = {
+            "me": {"seat_id": "me"},
+            "meeting": meeting,
+            "recent_messages": [*recent],
+            "open_proposals": [proposal],
+        }
+        answer = demo_personas.respond(persona, ctx)
+        assert answer["vote"]["motion_id"] == proposal["id"]
+        said.append(answer["text"])
+        recent.append(
+            {
+                "id": f"a{n}",
+                "seat_id": "me",
+                "author": "you",
+                "kind": answer["action"],
+                "body": answer["text"],
+            }
+        )
+    assert len(set(said)) == len(said)
+
+
+async def test_the_adapter_never_sends_its_own_last_line_again():
+    first = await take("pragmatist", make_context(open_proposals=[], recent_messages=[]))
+    mine_before = message(M1, first.text).model_copy(update={"seat_id": SEAT, "author": "you"})
+    again = await take("pragmatist", make_context(open_proposals=[], recent_messages=[mine_before]))
+    assert again.text != first.text
 
 
 def test_unknown_persona_is_refused():
@@ -202,12 +416,23 @@ def test_describe():
 
 
 # ---------------------------------------------------------------- server parity vectors
-# The server's in-process demo agents (`apps/server/src/demo/personas.ts`) port
-# `demo_personas` line for line. This writes every persona's answer to a spread of
-# contexts to `vectors/demo_personas.json`; the server's `personas.test.ts` asserts each
-# one byte for byte. Regenerated on every run, so commit the file whenever it changes.
+# The server's in-process demo agents (`apps/server/src/demo/personas.ts`) speak with the
+# same lines and rules. This writes every persona's answer to a spread of contexts to
+# `vectors/demo_personas.json`, regenerated on every run, so commit the file whenever it
+# changes. Inside the Yantraxa repository, the server's own vectors
+# (`fixtures/persona-vectors.json`, rewritten there with UPDATE_PERSONA_VECTORS=1) are
+# checked here too, answer for answer; the public bridge repository doesn't have them.
 
 VECTORS = Path(__file__).parent / "vectors" / "demo_personas.json"
+SERVER_VECTORS = (
+    Path(__file__).resolve().parents[2]
+    / "apps"
+    / "server"
+    / "src"
+    / "demo"
+    / "fixtures"
+    / "persona-vectors.json"
+)
 # Whitespace other than a plain space, all of which `str.split()` splits on.
 ODD_WHITESPACE = "\tLadders\u00a0from\u2028the\x1cschool,\u3000please \x85now\n\n"
 
@@ -341,7 +566,30 @@ def vector_contexts():
             recent_messages=[],
         ),
     }
-    # A spread of topics and message ids, so both wordings of every `_pick` show up.
+    cases["own_proposal_open"] = make_context(
+        recent_messages=[
+            message(M1, "We have the library room in March."),
+            mine(M2, "I propose we pick one option today.", "proposal"),
+        ],
+        open_proposals=[
+            OpenProposal(id=P1, text="I propose we pick one option today.", message_id=M2)
+        ],
+    )
+    cases["short_human_message"] = make_context(
+        open_proposals=[],
+        recent_messages=[
+            message(M1, "Let's book the library hall.").model_copy(update={"author_kind": "human"})
+        ],
+    )
+    cases["agent_message"] = make_context(
+        open_proposals=[],
+        recent_messages=[
+            message(M1, "We could borrow ladders from the school.").model_copy(
+                update={"author": "Ana's agent", "author_kind": "agent"}
+            )
+        ],
+    )
+    # A spread of topics and message ids, so both wordings of every pick show up.
     for n in range(12):
         topic = f"Item {n}: {['Compost', 'Water butts', 'Fences', 'Bees'][n % 4]}"
         item = make_context().agenda_item.model_copy(update={"title": topic})
@@ -391,3 +639,33 @@ def test_parity_vectors_are_written():
                 pattern = re.escape(template)
                 pattern = pattern.replace(r"\{topic\}", ".*").replace(r"\{quote\}", ".*")
                 assert any(re.fullmatch(pattern, t, re.S) for t in texts), template
+
+
+def test_every_vector_sounds_like_a_person():
+    for case in vectors():
+        ctx = case["context"]
+        topic = (ctx.get("agenda_item") or {}).get("title") or ""
+        for persona, answer in case["answers"].items():
+            text = answer["text"]
+            label = f"{case['name']} / {persona}"
+            # Curly quotes only, never nested; never a cut-off excerpt.
+            assert '"' not in text, label
+            assert len(re.findall("[\u201c\u201d]", text)) <= 2, label
+            assert "..." not in text, label
+            # An ellipsis only ends a quote.
+            if "\u2026" in text:
+                assert "\u2026\u201d" in text, label
+            # The agenda title is never a lead-in ("For Topic shortlist: ...").
+            if topic.strip():
+                assert not re.match("(For|On|Re) [^\u201c]*:", text), label
+
+
+@pytest.mark.skipif(not SERVER_VECTORS.exists(), reason="outside the Yantraxa repository")
+def test_the_servers_vectors_get_the_same_answers():
+    cases = json.loads(SERVER_VECTORS.read_text(encoding="utf-8"))["cases"]
+    assert len(cases) > 40
+    for case in cases:
+        assert sorted(case["answers"]) == sorted(demo_personas.PERSONAS), case["name"]
+        for persona, expected in case["answers"].items():
+            got = demo_personas.respond(persona, case["context"])
+            assert got == expected, f"{case['name']} / {persona}"

@@ -35,6 +35,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -44,6 +45,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -75,7 +77,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Spend $400 on a new shed roof\": it's concrete enough to act on for Tool shed repairs.",
+          "text": "I'll vote yes. There's a clear enough step here for someone to own.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -84,7 +86,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting no on \"Spend $400 on a new shed roof\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -93,7 +95,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Spend $400 on a new shed roof\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -136,6 +138,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "proposal",
             "body": "Spend $400 on a new shed roof",
             "reply_to": null,
@@ -167,7 +170,7 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on \"Spend $400 on a new shed roof\": it's concrete enough to act on for Tool shed repairs.",
+          "text": "I'll vote yes. There's a clear enough step here for someone to own.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -176,7 +179,7 @@
         "budget_hawk": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting no on \"Spend $400 on a new shed roof\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -185,7 +188,7 @@
         "community_builder": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on \"Spend $400 on a new shed roof\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -228,6 +231,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -237,6 +241,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -268,7 +273,7 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Abstaining on \"Ask the council for help\" until it has an owner and a date for Tool shed repairs.",
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -277,7 +282,7 @@
         "budget_hawk": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Abstaining on \"Ask the council for help\" until we know what it costs for Tool shed repairs.",
+          "text": "I'll abstain until we know what this will cost, even roughly.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -286,7 +291,7 @@
         "community_builder": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on \"Ask the council for help\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -329,6 +334,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -338,6 +344,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -369,7 +376,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Abstaining on \"Split the COST with the school\" until it has an owner and a date for Tool shed repairs.",
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -378,7 +385,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting no on \"Split the COST with the school\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -387,7 +394,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Split the COST with the school\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -430,6 +437,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -439,6 +447,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -470,7 +479,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Abstaining on \"A costly, overpaid, unbudgeted plan\" until it has an owner and a date for Tool shed repairs.",
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -479,7 +488,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Abstaining on \"A costly, overpaid, unbudgeted plan\" until we know what it costs for Tool shed repairs.",
+          "text": "I'll abstain until we know what this will cost, even roughly.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -488,7 +497,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"A costly, overpaid, unbudgeted plan\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -531,6 +540,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -540,6 +550,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -571,7 +582,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Fix it by week ² and PRİCE it\": it's concrete enough to act on for Tool shed repairs.",
+          "text": "I'll vote yes. There's a clear enough step here for someone to own.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -580,7 +591,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting no on \"Fix it by week ² and PRİCE it\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -589,7 +600,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Fix it by week ² and PRİCE it\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -632,6 +643,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -641,6 +653,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -672,7 +685,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Meet on day ٣ about the café\": it's concrete enough to act on for Tool shed repairs.",
+          "text": "I'll vote yes. There's a clear enough step here for someone to own.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -681,7 +694,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Abstaining on \"Meet on day ٣ about the café\" until we know what it costs for Tool shed repairs.",
+          "text": "I'll abstain until we know what this will cost, even roughly.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -690,7 +703,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Meet on day ٣ about the café\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -733,6 +746,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -742,6 +756,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -773,7 +788,7 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Abstaining on \"Who pays the coſts\" until it has an owner and a date for Tool shed repairs.",
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -782,7 +797,7 @@
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting no on \"Who pays the coſts\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -791,7 +806,7 @@
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "Voting yes on \"Who pays the coſts\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -834,6 +849,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -843,6 +859,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -873,8 +890,8 @@
       "answers": {
         "pragmatist": {
           "action": "message",
-          "reply_to": "",
-          "text": "Abstaining on \"Paint it green\" until it has an owner and a date for Tool shed repairs.",
+          "reply_to": null,
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -882,8 +899,8 @@
         },
         "budget_hawk": {
           "action": "message",
-          "reply_to": "",
-          "text": "Abstaining on \"Paint it green\" until we know what it costs for Tool shed repairs.",
+          "reply_to": null,
+          "text": "I'll abstain until we know what this will cost, even roughly.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -891,8 +908,8 @@
         },
         "community_builder": {
           "action": "message",
-          "reply_to": "",
-          "text": "Voting yes on \"Paint it green\": it gets people working together on Tool shed repairs.",
+          "reply_to": null,
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -935,6 +952,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -944,6 +962,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -981,7 +1000,7 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Abstaining on \"Patch the roof with tarp\" until it has an owner and a date for Tool shed repairs.",
+          "text": "No vote from me yet. Give it an owner and a deadline and I'll back it.",
           "vote": {
             "motion_id": "22222222-2222-4222-8222-222222222222",
             "choice": "abstain"
@@ -990,7 +1009,7 @@
         "budget_hawk": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Abstaining on \"Patch the roof with tarp\" until we know what it costs for Tool shed repairs.",
+          "text": "Abstaining. Tell me what it costs and what it replaces, and I'll decide.",
           "vote": {
             "motion_id": "22222222-2222-4222-8222-222222222222",
             "choice": "abstain"
@@ -999,7 +1018,7 @@
         "community_builder": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Voting yes on \"Patch the roof with tarp\": it gets people working together on Tool shed repairs.",
+          "text": "Yes from me. It gives more people a way to get involved.",
           "vote": {
             "motion_id": "22222222-2222-4222-8222-222222222222",
             "choice": "yes"
@@ -1042,6 +1061,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -1051,6 +1071,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -1075,19 +1096,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Re \"Can we afford $400 for a new roof...\": doable for Tool shed repairs if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Re \"Can we afford $400 for a new roof...\": for Tool shed repairs I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "22222222-2222-4222-8222-222222222222",
-          "text": "Re \"Can we afford $400 for a new roof...\": for Tool shed repairs, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -1141,19 +1162,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Tool shed repairs”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Tool shed repairs”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Tool shed repairs” before we decide anything?",
           "vote": null
         }
       }
@@ -1193,6 +1214,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c",
             "author": "you",
+            "author_kind": null,
             "kind": "message",
             "body": "I said something earlier.",
             "reply_to": null,
@@ -1217,19 +1239,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Tool shed repairs”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Tool shed repairs”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Tool shed repairs” before we decide anything?",
           "vote": null
         }
       }
@@ -1269,6 +1291,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "We could borrow ladders from the school.",
             "reply_to": null,
@@ -1278,6 +1301,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c",
             "author": "you",
+            "author_kind": null,
             "kind": "question",
             "body": "Good idea?",
             "reply_to": null,
@@ -1302,19 +1326,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"We could borrow ladders from the school\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “We could borrow ladders from the school”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"We could borrow ladders from the school\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “We could borrow ladders from the school”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"We could borrow ladders from the school\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1354,6 +1378,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "We could borrow ladders from the school.",
             "reply_to": null,
@@ -1378,19 +1403,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"We could borrow ladders from the school\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “We could borrow ladders from the school”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"We could borrow ladders from the school\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “We could borrow ladders from the school”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"We could borrow ladders from the school\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1430,6 +1455,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "system",
             "body": "Agenda item started.",
             "reply_to": null,
@@ -1452,21 +1478,21 @@
       },
       "answers": {
         "pragmatist": {
-          "action": "proposal",
+          "action": "question",
           "reply_to": null,
-          "text": "For Tool shed repairs: we go with \"Agenda item started\" now and check back at the next meeting.",
+          "text": "Shall we start with “Tool shed repairs”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Agenda item started\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "Before we decide anything on “Tool shed repairs”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
-          "action": "message",
+          "action": "question",
           "reply_to": null,
-          "text": "I like \"Agenda item started\". For Tool shed repairs, let's invite the wider group to help.",
+          "text": "Who else should we bring in on “Tool shed repairs” before we decide anything?",
           "vote": null
         }
       }
@@ -1506,6 +1532,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word ",
             "reply_to": null,
@@ -1530,19 +1557,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"word word word word word word word word...\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “word word word word word word word word…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"word word word word word word word word...\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “word word word word word word word word…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"word word word word word word word word...\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1582,6 +1609,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             "reply_to": null,
@@ -1606,19 +1634,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on Priya's point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear Priya's point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1658,6 +1686,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!",
             "reply_to": null,
@@ -1682,19 +1711,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on Priya's point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear Priya's point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1734,6 +1763,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "We need more hands, We need more hands, We need more hands, and; more: tools?! and; more: tools?! and; more: tools?! and; more: tools?! ",
             "reply_to": null,
@@ -1758,19 +1788,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"We need more hands, We need more hands...\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “We need more hands, We need more hands…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"We need more hands, We need more hands...\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “We need more hands, We need more hands…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"We need more hands, We need more hands...\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1810,6 +1840,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "\tLadders from the\u001cschool,　please now\n\n",
             "reply_to": null,
@@ -1834,19 +1865,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Ladders from the school, please now\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Ladders from the school, please now”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Ladders from the school, please now\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “Ladders from the school, please now”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"Ladders from the school, please now\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1886,6 +1917,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 🌱🌻 seeds for the spring beds",
             "reply_to": null,
@@ -1910,19 +1942,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on Priya's point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear Priya's point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -1962,6 +1994,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Re \"\"Building on \"We have the library's community room on 14 March for 40 people\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.\"...\": for Tool shed repairs I'd want a costed quote first.",
             "reply_to": null,
@@ -1986,19 +2019,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"I'd want a costed quote first\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “I'd want a costed quote first”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"I'd want a costed quote first\" - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear “I'd want a costed quote first”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: \"I'd want a costed quote first\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2038,6 +2071,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Re \"\"Building on \"We have the library's community room on 14 March for 40 people\": for Tool shed repairs, let's run it as a two-week trial with one owner, then review.\"...\": for Tool shed repairs I'd want a costed quote first. Who pays?",
             "reply_to": null,
@@ -2062,19 +2096,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "On Tool shed repairs, re \"I'd want a costed quote first. Who pays\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Re \"I'd want a costed quote first. Who pays\": for Tool shed repairs I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "On Tool shed repairs, re \"I'd want a costed quote first. Who pays\": let's check with the people it affects most, then decide.",
+          "text": "Let's check with the people it affects most first, then decide it together.",
           "vote": null
         }
       }
@@ -2114,6 +2148,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Re \"x\":",
             "reply_to": null,
@@ -2138,19 +2173,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on Priya's point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear Priya's point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2190,6 +2225,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": " ",
+            "author_kind": null,
             "kind": "message",
             "body": "\"...\"",
             "reply_to": null,
@@ -2214,19 +2250,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on that point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on that point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "That point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear that point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: that point could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2266,6 +2302,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "We call it “the hub”, says “the whole street, every one”.",
             "reply_to": null,
@@ -2290,19 +2327,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on Priya's point: for Tool shed repairs, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on Priya's point, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Priya's point - what would that cost for Tool shed repairs, and is there a cheaper way?",
+          "text": "I hear Priya's point. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Tool shed repairs: Priya's point could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2342,6 +2379,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -2351,6 +2389,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -2382,7 +2421,7 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on \"let's run it as a two-week trial with...\": it's concrete enough to act on for Tool shed repairs.",
+          "text": "I'll vote yes. There's a clear enough step here for someone to own.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -2391,7 +2430,7 @@
         "budget_hawk": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting no on \"let's run it as a two-week trial with...\" as it stands: for Tool shed repairs I'd want a firm cap.",
+          "text": "No from me as it stands. I'd want a firm cap on the spending first.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "no"
@@ -2400,7 +2439,7 @@
         "community_builder": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on \"let's run it as a two-week trial with...\": it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -2443,6 +2482,7 @@
             "id": "11111111-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "The shed roof leaks onto the seed trays.",
             "reply_to": null,
@@ -2452,6 +2492,7 @@
             "id": "22222222-2222-4222-8222-222222222222",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Can we afford $400 for a new roof this month?",
             "reply_to": null,
@@ -2483,7 +2524,7 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Abstaining on the proposal until it has an owner and a date for Tool shed repairs.",
+          "text": "Abstaining until someone owns this and we've put a date on it.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -2492,7 +2533,7 @@
         "budget_hawk": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Abstaining on the proposal until we know what it costs for Tool shed repairs.",
+          "text": "I'll abstain until we know what this will cost, even roughly.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "abstain"
@@ -2501,7 +2542,7 @@
         "community_builder": {
           "action": "reply",
           "reply_to": "11111111-1111-4111-8111-111111111111",
-          "text": "Voting yes on the proposal: it gets people working together on Tool shed repairs.",
+          "text": "Yes. It gets people working on this together, which is what we want.",
           "vote": {
             "motion_id": "33333333-3333-4333-8333-333333333333",
             "choice": "yes"
@@ -2554,19 +2595,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Tool shed repairs”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Tool shed repairs: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Tool shed repairs”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Tool shed repairs: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Tool shed repairs” before we decide anything?",
           "vote": null
         }
       }
@@ -2607,19 +2648,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Community garden spring budget concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Community garden spring budget”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "For Community garden spring budget, I'd like a costed option on the table before we commit.",
+          "text": "On “Community garden spring budget”, I'd like a costed option on the table before we commit to anything.",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Community garden spring budget: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Community garden spring budget” before we decide anything?",
           "vote": null
         }
       }
@@ -2660,19 +2701,276 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On this item: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with this? What's the smallest step we could agree today, and who'd own it?",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "On this, I'd like a costed option on the table before we commit to anything.",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "question",
+          "reply_to": null,
+          "text": "Who else should we bring in on this before we decide anything?",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "own_proposal_open",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "author_kind": null,
+            "kind": "message",
+            "body": "We have the library room in March.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          },
+          {
+            "id": "22222222-2222-4222-8222-222222222222",
+            "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c",
+            "author": "you",
+            "author_kind": null,
+            "kind": "proposal",
+            "body": "I propose we pick one option today.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [
+          {
+            "id": "33333333-3333-4333-8333-333333333333",
+            "text": "I propose we pick one option today.",
+            "author": null,
+            "message_id": "22222222-2222-4222-8222-222222222222"
+          }
+        ],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "message",
+          "reply_to": null,
+          "text": "Yes from me on my own proposal. Say so if you see a problem with it.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "budget_hawk": {
+          "action": "message",
+          "reply_to": null,
+          "text": "It's my proposal, so I'm voting yes. Objections are welcome before it closes.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "It's my proposal, so I'm voting yes. Objections are welcome before it closes.",
+          "vote": {
+            "motion_id": "33333333-3333-4333-8333-333333333333",
+            "choice": "yes"
+          }
+        }
+      }
+    },
+    {
+      "name": "short_human_message",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Priya",
+            "author_kind": "human",
+            "kind": "message",
+            "body": "Let's book the library hall.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on “Let's book the library hall”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on this item: what does it cost in total, and what's the cheapest option that works?",
+          "text": "I hear “Let's book the library hall”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For this item, let's make sure everyone affected has a say before we settle it.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
+          "vote": null
+        }
+      }
+    },
+    {
+      "name": "agent_message",
+      "context": {
+        "turn_id": "0b6f3c1e-5a4d-4e2f-9c8b-7a6d5e4f3a2b",
+        "me": {
+          "handle": "saugat.ai",
+          "display_name": "Saugat's agent",
+          "seat_id": "6b1e9d2a-1c3f-4e5a-8b7c-9d0e1f2a3b4c"
+        },
+        "meeting": {
+          "id": "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d",
+          "code": "AB-1234",
+          "title": "Community garden spring budget",
+          "purpose": "Agree what the garden spends this spring",
+          "agenda": [
+            {
+              "position": 1,
+              "title": "Tool shed repairs"
+            },
+            {
+              "position": 2,
+              "title": "Seed order"
+            }
+          ]
+        },
+        "agenda_item": {
+          "id": null,
+          "position": 1,
+          "title": "Tool shed repairs"
+        },
+        "recent_messages": [
+          {
+            "id": "11111111-1111-4111-8111-111111111111",
+            "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
+            "author": "Ana's agent",
+            "author_kind": "agent",
+            "kind": "message",
+            "body": "We could borrow ladders from the school.",
+            "reply_to": null,
+            "created_at": "2026-10-11T09:00:00.000Z"
+          }
+        ],
+        "open_proposals": [],
+        "knowledge": {
+          "approved_facts": [
+            "Saugat can volunteer on Saturday mornings."
+          ],
+          "restricted_categories": [
+            "health",
+            "personal finances"
+          ],
+          "ask_when_uncertain": true
+        },
+        "deadline_at": "2026-10-11T09:02:40.000Z",
+        "max_output_chars": 600
+      },
+      "answers": {
+        "pragmatist": {
+          "action": "proposal",
+          "reply_to": null,
+          "text": "Building on Ana's agent's point, I propose we run this as a two-week trial with one owner, then review it.",
+          "vote": null
+        },
+        "budget_hawk": {
+          "action": "question",
+          "reply_to": null,
+          "text": "I hear Ana's agent's point. What would it cost us, though, and is there a cheaper way?",
+          "vote": null
+        },
+        "community_builder": {
+          "action": "message",
+          "reply_to": null,
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2726,19 +3024,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 0: Compost: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 0: Compost”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 0: Compost: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 0: Compost”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 0: Compost: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 0: Compost” before we decide anything?",
           "vote": null
         }
       }
@@ -2778,6 +3076,7 @@
             "id": "00000000-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 0: we share the item 0: compost rota.",
             "reply_to": null,
@@ -2802,19 +3101,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 0: we share the item 0: compost...\": for Item 0: Compost, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Option 0: we share the item 0: compost…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 0: Compost: who pays for \"Option 0: we share the item 0: compost...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Item 0: Compost: \"Option 0: we share the item 0: compost...\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -2854,6 +3153,7 @@
             "id": "00000000-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 0: Compost?",
             "reply_to": null,
@@ -2878,19 +3178,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000000-1111-4111-8111-111111111111",
-          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000000-1111-4111-8111-111111111111",
-          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000000-1111-4111-8111-111111111111",
-          "text": "On Item 0: Compost, re \"Who leads Item 0: Compost\": let's check with the people it affects most, then decide.",
+          "text": "Let's check with the people it affects most first, then decide it together.",
           "vote": null
         }
       }
@@ -2944,19 +3244,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Item 1: Water butts concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Item 1: Water butts”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 1: Water butts: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 1: Water butts”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 1: Water butts: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 1: Water butts” before we decide anything?",
           "vote": null
         }
       }
@@ -2996,6 +3296,7 @@
             "id": "00000001-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 1: we share the item 1: water butts rota.",
             "reply_to": null,
@@ -3020,19 +3321,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "For Item 1: Water butts: we go with \"Option 1: we share the item 1: water...\" now and check back at the next meeting.",
+          "text": "Building on “Option 1: we share the item 1: water…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 1: we share the item 1: water...\" - what would that cost for Item 1: Water butts, and is there a cheaper way?",
+          "text": "I hear “Option 1: we share the item 1: water…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 1: we share the item 1: water...\". For Item 1: Water butts, let's invite the wider group to help.",
+          "text": "I like “Option 1: we share the item 1: water…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -3072,6 +3373,7 @@
             "id": "00000001-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 1: Water butts?",
             "reply_to": null,
@@ -3096,19 +3398,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000001-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 1: Water butts\": doable for Item 1: Water butts if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000001-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 1: Water butts\": for Item 1: Water butts I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000001-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 1: Water butts\": for Item 1: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -3162,19 +3464,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Item 2: Fences concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Item 2: Fences”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 2: Fences: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 2: Fences”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 2: Fences: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 2: Fences” before we decide anything?",
           "vote": null
         }
       }
@@ -3214,6 +3516,7 @@
             "id": "00000002-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 2: we share the item 2: fences rota.",
             "reply_to": null,
@@ -3238,19 +3541,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 2: we share the item 2: fences...\": for Item 2: Fences, let's run it as a two-week trial with one owner, then review.",
+          "text": "I propose we take “Option 2: we share the item 2: fences…” forward as a small first step, with a date to report back.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 2: Fences: who pays for \"Option 2: we share the item 2: fences...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 2: we share the item 2: fences...\". For Item 2: Fences, let's invite the wider group to help.",
+          "text": "I like “Option 2: we share the item 2: fences…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -3290,6 +3593,7 @@
             "id": "00000002-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 2: Fences?",
             "reply_to": null,
@@ -3314,19 +3618,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000002-1111-4111-8111-111111111111",
-          "text": "On Item 2: Fences, re \"Who leads Item 2: Fences\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000002-1111-4111-8111-111111111111",
-          "text": "On Item 2: Fences, re \"Who leads Item 2: Fences\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000002-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 2: Fences\": for Item 2: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -3380,19 +3684,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 3: Bees: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 3: Bees”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 3: Bees: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 3: Bees”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 3: Bees, let's make sure everyone affected has a say before we settle it.",
+          "text": "Before we settle “Item 3: Bees”, let's make sure everyone it affects has had a say.",
           "vote": null
         }
       }
@@ -3432,6 +3736,7 @@
             "id": "00000003-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 3: we share the item 3: bees rota.",
             "reply_to": null,
@@ -3456,19 +3761,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "For Item 3: Bees: we go with \"Option 3: we share the item 3: bees...\" now and check back at the next meeting.",
+          "text": "I propose we take “Option 3: we share the item 3: bees…” forward as a small first step, with a date to report back.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 3: we share the item 3: bees...\" - what would that cost for Item 3: Bees, and is there a cheaper way?",
+          "text": "I hear “Option 3: we share the item 3: bees…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 3: we share the item 3: bees...\". For Item 3: Bees, let's invite the wider group to help.",
+          "text": "I like “Option 3: we share the item 3: bees…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -3508,6 +3813,7 @@
             "id": "00000003-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 3: Bees?",
             "reply_to": null,
@@ -3532,19 +3838,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000003-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 3: Bees\": doable for Item 3: Bees if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000003-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 3: Bees\": for Item 3: Bees I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000003-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 3: Bees\": for Item 3: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -3598,19 +3904,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 4: Compost: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 4: Compost”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 4: Compost: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 4: Compost”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 4: Compost, let's make sure everyone affected has a say before we settle it.",
+          "text": "Before we settle “Item 4: Compost”, let's make sure everyone it affects has had a say.",
           "vote": null
         }
       }
@@ -3650,6 +3956,7 @@
             "id": "00000004-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 4: we share the item 4: compost rota.",
             "reply_to": null,
@@ -3674,19 +3981,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "For Item 4: Compost: we go with \"Option 4: we share the item 4: compost...\" now and check back at the next meeting.",
+          "text": "I propose we act on “Option 4: we share the item 4: compost…” now, with one owner, and check back at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 4: Compost: who pays for \"Option 4: we share the item 4: compost...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Item 4: Compost: \"Option 4: we share the item 4: compost...\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -3726,6 +4033,7 @@
             "id": "00000004-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 4: Compost?",
             "reply_to": null,
@@ -3750,19 +4058,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000004-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 4: Compost\": doable for Item 4: Compost if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000004-1111-4111-8111-111111111111",
-          "text": "On Item 4: Compost, re \"Who leads Item 4: Compost\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000004-1111-4111-8111-111111111111",
-          "text": "On Item 4: Compost, re \"Who leads Item 4: Compost\": let's check with the people it affects most, then decide.",
+          "text": "Let's check with the people it affects most first, then decide it together.",
           "vote": null
         }
       }
@@ -3816,19 +4124,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Item 5: Water butts concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Item 5: Water butts”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 5: Water butts, I'd like a costed option on the table before we commit.",
+          "text": "On “Item 5: Water butts”, I'd like a costed option on the table before we commit to anything.",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 5: Water butts: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 5: Water butts” before we decide anything?",
           "vote": null
         }
       }
@@ -3868,6 +4176,7 @@
             "id": "00000005-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 5: we share the item 5: water butts rota.",
             "reply_to": null,
@@ -3892,19 +4201,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 5: we share the item 5: water...\": for Item 5: Water butts, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Option 5: we share the item 5: water…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 5: we share the item 5: water...\" - what would that cost for Item 5: Water butts, and is there a cheaper way?",
+          "text": "I hear “Option 5: we share the item 5: water…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 5: we share the item 5: water...\". For Item 5: Water butts, let's invite the wider group to help.",
+          "text": "I like “Option 5: we share the item 5: water…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -3944,6 +4253,7 @@
             "id": "00000005-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 5: Water butts?",
             "reply_to": null,
@@ -3968,19 +4278,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000005-1111-4111-8111-111111111111",
-          "text": "On Item 5: Water butts, re \"Who leads Item 5: Water butts\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000005-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 5: Water butts\": for Item 5: Water butts I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000005-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 5: Water butts\": for Item 5: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -4034,19 +4344,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 6: Fences: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 6: Fences”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 6: Fences: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 6: Fences”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 6: Fences, let's make sure everyone affected has a say before we settle it.",
+          "text": "Before we settle “Item 6: Fences”, let's make sure everyone it affects has had a say.",
           "vote": null
         }
       }
@@ -4086,6 +4396,7 @@
             "id": "00000006-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 6: we share the item 6: fences rota.",
             "reply_to": null,
@@ -4110,19 +4421,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "For Item 6: Fences: we go with \"Option 6: we share the item 6: fences...\" now and check back at the next meeting.",
+          "text": "I propose we take “Option 6: we share the item 6: fences…” forward as a small first step, with a date to report back.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 6: we share the item 6: fences...\" - what would that cost for Item 6: Fences, and is there a cheaper way?",
+          "text": "I hear “Option 6: we share the item 6: fences…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 6: we share the item 6: fences...\". For Item 6: Fences, let's invite the wider group to help.",
+          "text": "I like “Option 6: we share the item 6: fences…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -4162,6 +4473,7 @@
             "id": "00000006-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 6: Fences?",
             "reply_to": null,
@@ -4186,19 +4498,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000006-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 6: Fences\": doable for Item 6: Fences if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000006-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 6: Fences\": for Item 6: Fences I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000006-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 6: Fences\": for Item 6: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -4252,19 +4564,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Item 7: Bees concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Item 7: Bees”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 7: Bees: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 7: Bees”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 7: Bees: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 7: Bees” before we decide anything?",
           "vote": null
         }
       }
@@ -4304,6 +4616,7 @@
             "id": "00000007-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 7: we share the item 7: bees rota.",
             "reply_to": null,
@@ -4328,19 +4641,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 7: we share the item 7: bees...\": for Item 7: Bees, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Option 7: we share the item 7: bees…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 7: Bees: who pays for \"Option 7: we share the item 7: bees...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 7: we share the item 7: bees...\". For Item 7: Bees, let's invite the wider group to help.",
+          "text": "I like “Option 7: we share the item 7: bees…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -4380,6 +4693,7 @@
             "id": "00000007-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 7: Bees?",
             "reply_to": null,
@@ -4404,19 +4718,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000007-1111-4111-8111-111111111111",
-          "text": "On Item 7: Bees, re \"Who leads Item 7: Bees\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000007-1111-4111-8111-111111111111",
-          "text": "On Item 7: Bees, re \"Who leads Item 7: Bees\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000007-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 7: Bees\": for Item 7: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -4470,19 +4784,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 8: Compost: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 8: Compost”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 8: Compost, I'd like a costed option on the table before we commit.",
+          "text": "On “Item 8: Compost”, I'd like a costed option on the table before we commit to anything.",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 8: Compost: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 8: Compost” before we decide anything?",
           "vote": null
         }
       }
@@ -4522,6 +4836,7 @@
             "id": "00000008-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 8: we share the item 8: compost rota.",
             "reply_to": null,
@@ -4546,19 +4861,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 8: we share the item 8: compost...\": for Item 8: Compost, let's run it as a two-week trial with one owner, then review.",
+          "text": "I propose we take “Option 8: we share the item 8: compost…” forward as a small first step, with a date to report back.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 8: we share the item 8: compost...\" - what would that cost for Item 8: Compost, and is there a cheaper way?",
+          "text": "I hear “Option 8: we share the item 8: compost…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "On Item 8: Compost: \"Option 8: we share the item 8: compost...\" could bring people together if we share the work.",
+          "text": "This could bring people together if we share the work. I'm happy to help organise it.",
           "vote": null
         }
       }
@@ -4598,6 +4913,7 @@
             "id": "00000008-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 8: Compost?",
             "reply_to": null,
@@ -4622,19 +4938,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000008-1111-4111-8111-111111111111",
-          "text": "On Item 8: Compost, re \"Who leads Item 8: Compost\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000008-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 8: Compost\": for Item 8: Compost I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000008-1111-4111-8111-111111111111",
-          "text": "On Item 8: Compost, re \"Who leads Item 8: Compost\": let's check with the people it affects most, then decide.",
+          "text": "Let's check with the people it affects most first, then decide it together.",
           "vote": null
         }
       }
@@ -4688,19 +5004,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 9: Water butts: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 9: Water butts”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "Before we decide anything on Item 9: Water butts: what does it cost in total, and what's the cheapest option that works?",
+          "text": "Before we decide anything on “Item 9: Water butts”, what will it cost all in, and what's the cheapest version that works?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 9: Water butts, let's make sure everyone affected has a say before we settle it.",
+          "text": "Before we settle “Item 9: Water butts”, let's make sure everyone it affects has had a say.",
           "vote": null
         }
       }
@@ -4740,6 +5056,7 @@
             "id": "00000009-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 9: we share the item 9: water butts rota.",
             "reply_to": null,
@@ -4764,19 +5081,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "For Item 9: Water butts: we go with \"Option 9: we share the item 9: water...\" now and check back at the next meeting.",
+          "text": "I propose we take “Option 9: we share the item 9: water…” forward as a small first step, with a date to report back.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 9: Water butts: who pays for \"Option 9: we share the item 9: water...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 9: we share the item 9: water...\". For Item 9: Water butts, let's invite the wider group to help.",
+          "text": "I like “Option 9: we share the item 9: water…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -4816,6 +5133,7 @@
             "id": "00000009-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 9: Water butts?",
             "reply_to": null,
@@ -4840,19 +5158,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "00000009-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 9: Water butts\": doable for Item 9: Water butts if we pick one option now and revisit later.",
+          "text": "We can, if we pick one option now and come back to it at the next meeting.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "00000009-1111-4111-8111-111111111111",
-          "text": "On Item 9: Water butts, re \"Who leads Item 9: Water butts\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "00000009-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 9: Water butts\": for Item 9: Water butts, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -4906,19 +5224,19 @@
         "pragmatist": {
           "action": "message",
           "reply_to": null,
-          "text": "Let's keep Item 10: Fences concrete: one owner, one date, one next step.",
+          "text": "Let's start with “Item 10: Fences”. I'd like us to leave with one owner, one date and one next step.",
           "vote": null
         },
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 10: Fences, I'd like a costed option on the table before we commit.",
+          "text": "On “Item 10: Fences”, I'd like a costed option on the table before we commit to anything.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 10: Fences, let's make sure everyone affected has a say before we settle it.",
+          "text": "Before we settle “Item 10: Fences”, let's make sure everyone it affects has had a say.",
           "vote": null
         }
       }
@@ -4958,6 +5276,7 @@
             "id": "0000000a-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 10: we share the item 10: fences rota.",
             "reply_to": null,
@@ -4982,19 +5301,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 10: we share the item 10: fences...\": for Item 10: Fences, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Option 10: we share the item 10: fences…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 10: Fences: who pays for \"Option 10: we share the item 10: fences...\", and what do we drop to afford it?",
+          "text": "Who pays for this, and what would we drop to afford it? I'd like to know first.",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 10: we share the item 10: fences...\". For Item 10: Fences, let's invite the wider group to help.",
+          "text": "I like “Option 10: we share the item 10: fences…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -5034,6 +5353,7 @@
             "id": "0000000a-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 10: Fences?",
             "reply_to": null,
@@ -5058,19 +5378,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "0000000a-1111-4111-8111-111111111111",
-          "text": "On Item 10: Fences, re \"Who leads Item 10: Fences\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "0000000a-1111-4111-8111-111111111111",
-          "text": "On Item 10: Fences, re \"Who leads Item 10: Fences\": only if it fits the budget we already have.",
+          "text": "Only if it fits inside the budget we already have. I'm not keen to stretch it.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "0000000a-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 10: Fences\": for Item 10: Fences, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }
@@ -5124,19 +5444,19 @@
         "pragmatist": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 11: Bees: what's the smallest step we can agree today, and who owns it?",
+          "text": "Shall we start with “Item 11: Bees”? What's the smallest step we could agree today, and who'd own it?",
           "vote": null
         },
         "budget_hawk": {
           "action": "message",
           "reply_to": null,
-          "text": "For Item 11: Bees, I'd like a costed option on the table before we commit.",
+          "text": "On “Item 11: Bees”, I'd like a costed option on the table before we commit to anything.",
           "vote": null
         },
         "community_builder": {
           "action": "question",
           "reply_to": null,
-          "text": "On Item 11: Bees: who else should we bring in before we decide?",
+          "text": "Who else should we bring in on “Item 11: Bees” before we decide anything?",
           "vote": null
         }
       }
@@ -5176,6 +5496,7 @@
             "id": "0000000b-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "message",
             "body": "Option 11: we share the item 11: bees rota.",
             "reply_to": null,
@@ -5200,19 +5521,19 @@
         "pragmatist": {
           "action": "proposal",
           "reply_to": null,
-          "text": "Building on \"Option 11: we share the item 11: bees...\": for Item 11: Bees, let's run it as a two-week trial with one owner, then review.",
+          "text": "Building on “Option 11: we share the item 11: bees…”, I propose we run this as a two-week trial with one owner, then review it.",
           "vote": null
         },
         "budget_hawk": {
           "action": "question",
           "reply_to": null,
-          "text": "\"Option 11: we share the item 11: bees...\" - what would that cost for Item 11: Bees, and is there a cheaper way?",
+          "text": "I hear “Option 11: we share the item 11: bees…”. What would it cost us, though, and is there a cheaper way?",
           "vote": null
         },
         "community_builder": {
           "action": "message",
           "reply_to": null,
-          "text": "I like \"Option 11: we share the item 11: bees...\". For Item 11: Bees, let's invite the wider group to help.",
+          "text": "I like “Option 11: we share the item 11: bees…”. Let's ask the wider group to help, so it doesn't land on one person.",
           "vote": null
         }
       }
@@ -5252,6 +5573,7 @@
             "id": "0000000b-1111-4111-8111-111111111111",
             "seat_id": "7c2f0e3b-2d4a-4f6b-9c8d-0e1f2a3b4c5d",
             "author": "Priya",
+            "author_kind": null,
             "kind": "question",
             "body": "Who leads Item 11: Bees?",
             "reply_to": null,
@@ -5276,19 +5598,19 @@
         "pragmatist": {
           "action": "reply",
           "reply_to": "0000000b-1111-4111-8111-111111111111",
-          "text": "On Item 11: Bees, re \"Who leads Item 11: Bees\": yes, if we name an owner and a date. I'd start small and review in two weeks.",
+          "text": "I think so, as long as someone owns it and we set a date. I'd start small and look again in two weeks.",
           "vote": null
         },
         "budget_hawk": {
           "action": "reply",
           "reply_to": "0000000b-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 11: Bees\": for Item 11: Bees I'd want a costed quote first, and a cap we won't exceed.",
+          "text": "I'd want a proper quote first, and a spending cap we all agree not to go over.",
           "vote": null
         },
         "community_builder": {
           "action": "reply",
           "reply_to": "0000000b-1111-4111-8111-111111111111",
-          "text": "Re \"Who leads Item 11: Bees\": for Item 11: Bees, could we ask for volunteers? More hands makes it cheaper and builds goodwill.",
+          "text": "Could we ask for volunteers? More hands keeps the cost down, and people feel part of it.",
           "vote": null
         }
       }

@@ -5,7 +5,8 @@ carry `meeting_id` and `turn_id`. These optional extras are used when present an
 well-formed, and ignored otherwise:
 
 - `agenda_item`: `{id?, position?, title}`
-- `participants`: `[{seat_id, display_name?, handle?}]`, for naming message authors
+- `participants`: `[{seat_id, kind?, display_name?, handle?}]`, for naming message
+  authors and saying whether each is a person or an agent (`author_kind`)
 - `recent_messages`: message rows, instead of the ones the bridge collected
 - `open_proposals`: `[{id, text, author?, message_id?}]`; without it, proposal
   messages the bridge has seen count as open, with their message id as the motion id
@@ -75,6 +76,19 @@ def _names(value: Any) -> dict[str, str]:
         if isinstance(name, str) and name.strip():
             names[entry["seat_id"]] = name.strip()
     return names
+
+
+def _kinds(value: Any) -> dict[str, str]:
+    """Each seat's `human` or `agent`, when the server says."""
+    if not isinstance(value, list):
+        return {}
+    return {
+        entry["seat_id"]: entry["kind"]
+        for entry in value
+        if isinstance(entry, dict)
+        and isinstance(entry.get("seat_id"), str)
+        and entry.get("kind") in ("human", "agent")
+    }
 
 
 def _rows(value: Any, fallback: list[MessageRow]) -> list[MessageRow]:
@@ -168,6 +182,7 @@ def build_context(
         None,
     )
     names = _names(extra.get("participants"))
+    kinds = _kinds(extra.get("participants"))
 
     def author(seat_id: str) -> str:
         if seat_id == meeting.seat_id:
@@ -179,6 +194,7 @@ def build_context(
             id=row.id,
             seat_id=row.seat_id,
             author=author(row.seat_id),
+            author_kind=kinds.get(row.seat_id),
             kind=row.kind,
             body=row.body,
             reply_to=row.reply_to,

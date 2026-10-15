@@ -6,6 +6,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from yantraxa_bridge import demo_personas
 from yantraxa_bridge.adapters import make_turn_handler
 from yantraxa_bridge.adapters.base import AdapterInfo, Chunk, Final
 from yantraxa_bridge.adapters.context import build_context
@@ -264,6 +265,24 @@ def test_context_from_meeting_state_invitation_and_request_extras():
     assert ctx.max_output_chars == 300
 
 
+def test_context_says_whether_each_author_is_a_person_or_an_agent():
+    agent_seat = str(uuid.uuid4())
+    io = FakeIO(
+        meeting_state([row("Hello."), row("Hi all.", seat=agent_seat), row("Mine.", seat=SEAT)]),
+        participants=[
+            {"seat_id": OTHER, "kind": "human", "display_name": "Priya"},
+            {"seat_id": agent_seat, "kind": "agent", "display_name": "Ana's agent"},
+            {"seat_id": SEAT, "kind": "robot"},
+        ],
+    )
+    ctx = build_context(io.request, io.meeting, io.client, timeout_s=40)
+    assert [m.author_kind for m in ctx.recent_messages] == ["human", "agent", None]
+    # An older server's participants carry no kind.
+    bare = FakeIO(meeting_state([row("Hello.")]), participants=[{"seat_id": OTHER}])
+    ctx = build_context(bare.request, bare.meeting, bare.client, timeout_s=40)
+    assert [m.author_kind for m in ctx.recent_messages] == [None]
+
+
 def test_context_tolerates_odd_extras_and_missing_invitation():
     io = FakeIO(
         meeting_state(),
@@ -439,7 +458,8 @@ async def test_a_turn_request_through_the_client(home):
         [action] = response["payload"]["actions"]
         assert action["action"] == "reply"
         assert action["reply_to"] == question["id"]
-        assert "Tool shed" in action["text"]
+        # A reply answers the question it replies to, so it needs neither quote nor topic.
+        assert action["text"] in demo_personas.REPLIES["pragmatist"]
 
 
 async def test_the_turns_knowledge_is_kept_for_the_meeting(home):
