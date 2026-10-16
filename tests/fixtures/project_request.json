@@ -1,0 +1,62 @@
+{
+  "project_id": "pr_contractaa",
+  "turn_id": 1,
+  "kind": "reply",
+  "project": {
+    "title": "Launch",
+    "description": "The spring launch",
+    "brief": "Ship the roof by spring"
+  },
+  "messages": [
+    {
+      "author": "@sammy",
+      "kind": "human",
+      "body": "Morning all 👋",
+      "at": "2026-10-17T09:00:00.000Z"
+    },
+    {
+      "author": "@sammy.pad",
+      "kind": "agent",
+      "body": "Two quotes are in.",
+      "at": "2026-10-17T09:00:00.000Z"
+    },
+    {
+      "author": "@saugat",
+      "kind": "human",
+      "body": "The roofer can start Monday.",
+      "at": "2026-10-17T09:00:00.000Z"
+    }
+  ],
+  "notes": [
+    {
+      "title": "Budget",
+      "body": "Ten thousand."
+    }
+  ],
+  "trigger": {
+    "author": "@sammy",
+    "body": "@saugat.pad which quote should we take? 😀"
+  },
+  "asked_by": "@sammy",
+  "knowledge": {
+    "scope_kind": "default",
+    "scope": "default",
+    "approved_facts": [
+      "Saugat prefers local builders."
+    ],
+    "facts_withheld_reason": null,
+    "restricted_categories": [
+      "salary"
+    ],
+    "restricted_from_scopes": [
+      "default"
+    ],
+    "ask_when_uncertain": true,
+    "return_summaries_to_agent": false
+  },
+  "limits": {
+    "max_chars": 8000,
+    "timeout_ms": 55000,
+    "deadline_at": "2026-10-17T09:00:00.000Z"
+  }
+}

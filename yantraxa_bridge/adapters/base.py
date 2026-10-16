@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import AsyncIterator
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel, Field, model_serializer
@@ -126,6 +126,34 @@ class Knowledge(BaseModel):
         )
 
 
+class ProjectMessage(BaseModel):
+    author: str
+    kind: Literal["human", "agent"] = "human"
+    body: str
+    at: str | None = None
+
+
+class ProjectNote(BaseModel):
+    title: str
+    body: str = ""
+
+
+class ProjectInfo(BaseModel):
+    """0.2.0: a project request. On a project turn the meeting fields are placeholders and
+    the prompt reads this instead; the only answer is a `message` (or a pass)."""
+
+    id: str
+    turn_id: int
+    kind: Literal["reply", "summarise", "plan"] = "reply"
+    title: str = ""
+    description: str = ""
+    brief: str = ""
+    messages: list[ProjectMessage] = Field(default_factory=list)
+    notes: list[ProjectNote] = Field(default_factory=list)
+    trigger: ProjectMessage | None = None
+    asked_by: str | None = None
+
+
 class TurnContext(BaseModel):
     """Everything an adapter may use for one turn. `personal_agent` receives it as JSON."""
 
@@ -144,14 +172,16 @@ class TurnContext(BaseModel):
     max_output_chars: int = Field(default=DEFAULT_MAX_OUTPUT_CHARS, gt=0, le=MAX_TEXT_CHARS)
     # What the seat may do this turn (`turn_request.allowed_actions`); always has `pass`.
     allowed_actions: list[ActionName] = Field(default_factory=lambda: list(ACTION_NAMES))
+    # 0.2.0: set on a project turn (a `project_request`), None on a meeting turn.
+    project: ProjectInfo | None = None
 
     @model_serializer(mode="wrap")
     def _drop_absent_m5(self, handler: Any) -> dict[str, Any]:
-        """Leave the M5 fields out when unset, and `allowed_actions` when it is every
-        action, so an M4 turn dumps as it always did (the demo parity vectors and
-        `personal_agent`'s JSON depend on it)."""
+        """Leave the M5 fields (and `project`) out when unset, and `allowed_actions` when
+        it is every action, so an M4 turn dumps as it always did (the demo parity vectors
+        and `personal_agent`'s JSON depend on it)."""
         data = handler(self)
-        for key in ("open_motions", "briefing"):
+        for key in ("open_motions", "briefing", "project"):
             if data.get(key) is None:
                 data.pop(key, None)
         if list(data.get("allowed_actions") or ()) == list(ACTION_NAMES):
@@ -166,18 +196,27 @@ class Chunk:
     text: str
 
 
+PassReason = Literal["error", "limit"]
+
+
 @dataclass(frozen=True)
 class Final:
-    """The turn's answer; an adapter yields exactly one, last."""
+    """The turn's answer; an adapter yields exactly one, last.
+
+    `pass_reason` says why an adapter passed on its own (`pass_turn`): `error` when the
+    model or CLI failed, `limit` when the owner's caps stopped the turn. A pass the model
+    chose has none. Project turns report it; meeting turns ignore it.
+    """
 
     actions: list[TurnAction]
+    pass_reason: PassReason | None = field(default=None, compare=False)
 
 
 TurnEvent = Chunk | Final
 
 
-def pass_turn() -> Final:
-    return Final([TurnAction(action="pass")])
+def pass_turn(reason: PassReason = "error") -> Final:
+    return Final([TurnAction(action="pass")], pass_reason=reason)
 
 
 class Adapter(Protocol):

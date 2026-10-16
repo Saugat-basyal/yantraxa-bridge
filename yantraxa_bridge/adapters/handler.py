@@ -15,6 +15,11 @@ the final answer still arrives in full.
 An action the turn doesn't allow (`TurnContext.allowed_actions`) never goes out, whatever
 the model answered: it becomes a `message` with the same text when messages are allowed,
 and a pass otherwise. `downgraded` is told why, for the transparency log.
+
+A project request (0.2.0) runs the same adapter on a project context, without streaming
+(there is no chunk frame for projects): the first spoken action's text, redacted and cut
+to the request's `max_chars`, is the reply. A pass says why: the model chose it
+(`declined`), the owner's caps stopped it (`limit`), or the adapter failed (`error`).
 """
 
 from __future__ import annotations
@@ -22,12 +27,13 @@ from __future__ import annotations
 import asyncio
 import logging
 import re
+from typing import Any
 
-from ..client import TurnIO
-from ..protocol import TurnAction, TurnRequestPayload
+from ..client import ProjectAnswer, TurnIO
+from ..protocol import ProjectRequestPayload, TurnAction, TurnRequestPayload
 from ..redaction import Redactor
 from .base import MAX_TEXT_CHARS, Adapter, Chunk, Final, TurnContext
-from .context import build_context
+from .context import build_context, build_project_context
 
 log = logging.getLogger("yantraxa_bridge.adapters.handler")
 
@@ -132,6 +138,28 @@ class AdapterTurnHandler:
                 await io.chunk(piece)
         return actions
 
+    async def take_project_turn(
+        self, request: ProjectRequestPayload, agent: dict[str, Any] | None
+    ) -> ProjectAnswer:
+        ctx = build_project_context(request, agent, timeout_s=self.timeout_s)
+        final: Final | None = None
+        events = self.adapter.take_turn(ctx)
+        try:
+            async for event in events:
+                if isinstance(event, Final):
+                    final = event
+                    break
+        finally:
+            aclose = getattr(events, "aclose", None)
+            if aclose is not None:
+                await aclose()
+        if final is None:
+            return ProjectAnswer(reason="error")
+        actions = self._finish(self._allowed(final.actions, ctx), ctx.max_output_chars)
+        if actions[0].action == "pass":
+            return ProjectAnswer(reason=final.pass_reason or "declined")
+        return ProjectAnswer(text=actions[0].text)
+
     def _allowed(self, answer: list[TurnAction] | None, ctx: TurnContext) -> list[TurnAction]:
         """`answer` with every action the turn doesn't allow made a message or a pass."""
         allowed = ctx.allowed_actions
@@ -158,7 +186,8 @@ class AdapterTurnHandler:
         for action in (answer or [])[:MAX_ACTIONS]:
             if action.action == "pass":
                 continue
-            text = self.redactor.redact((action.text or "").strip()[:limit])
+            # Redacted before the cut, so a secret the cut would split is still found.
+            text = self.redactor.redact((action.text or "").strip())[:limit]
             if not text.strip():
                 continue
             spoken.append(action.model_copy(update={"text": text[:MAX_TEXT_CHARS]}))

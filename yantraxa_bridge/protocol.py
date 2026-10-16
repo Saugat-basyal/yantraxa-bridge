@@ -7,6 +7,11 @@ Bridge → server: `auth` is answered by `auth_ok` (or a close), `ping` by `pong
 `ack` by nothing. Every other bridge frame gets `ack { id }` once handled, with an
 `error { code, ref_id }` before it when handling failed, so the bridge stops resending
 either way.
+
+Projects (0.2.0): the bridge advertises `capabilities: ["projects"]` in `auth`, and only
+then does the server send `project_request`; the bridge answers each with one
+`project_response` (plain text) or `project_pass` (a reason). An older server never sends
+it and ignores the capabilities; an older bridge would drop the frame as unknown.
 """
 
 from __future__ import annotations
@@ -50,6 +55,17 @@ ADAPTER_TYPES = (
 AGENT_ID_PATTERN = r"^ag_[a-z2-7]{6}$"
 SECRET_PATTERN = r"^[A-Za-z0-9_-]{1,128}$"
 MEETING_CODE_PATTERN = r"^[A-Z]{2}-\d{4}$"
+PROJECT_ID_PATTERN = r"^pr_[a-z2-7]{10}$"
+
+# What this bridge can do beyond meeting turns, sent in `auth` (AGENT_CAPABILITIES).
+BRIDGE_CAPABILITIES: tuple[str, ...] = ("projects",)
+ProjectKind = Literal["reply", "summarise", "plan"]
+ProjectPassReason = Literal["declined", "error", "timeout", "unsupported", "limit"]
+# The longest reply a project request may ask for (PROJECT_REPLY_MAX_CHARS).
+PROJECT_REPLY_MAX_CHARS = 8000
+# The bridge's own time limit for a project request is clamped to this (seconds).
+PROJECT_TIMEOUT_MIN_S = 5.0
+PROJECT_TIMEOUT_MAX_S = 55.0
 
 ActivityState = Literal["reading_agenda", "preparing", "responding"]
 ActionName = Literal["message", "question", "reply", "proposal", "pass"]
@@ -113,6 +129,8 @@ class AuthPayload(_Strict):
     adapter_type: Literal[
         "ollama", "personal_agent", "demo", "interactive_mcp", "claude_code", "codex_cli"
     ]
+    # 0.2.0: what the bridge can do beyond meeting turns; an older server ignores it.
+    capabilities: list[str] | None = None
 
 
 class PingPayload(_Named):
@@ -176,6 +194,27 @@ class AckPayload(_Named):
     id: Uuid
 
 
+class ProjectResponsePayload(_Named):
+    """The agent's reply to a `project_request`, posted in the project's discussion."""
+
+    turn_id: int = Field(gt=0)
+    text: str = Field(max_length=PROJECT_REPLY_MAX_CHARS)
+
+    @field_validator("text")
+    @classmethod
+    def _not_blank(cls, text: str) -> str:
+        if not text.strip():
+            raise ValueError("empty reply")
+        return text
+
+
+class ProjectPassPayload(_Named):
+    """No reply to a `project_request`, and why; the server posts a note instead."""
+
+    turn_id: int = Field(gt=0)
+    reason: ProjectPassReason
+
+
 BRIDGE_PAYLOADS: dict[str, type[_Strict]] = {
     "auth": AuthPayload,
     "ping": PingPayload,
@@ -184,9 +223,13 @@ BRIDGE_PAYLOADS: dict[str, type[_Strict]] = {
     "turn_response": TurnResponsePayload,
     "message": MessagePayload,
     "ack": AckPayload,
+    "project_response": ProjectResponsePayload,
+    "project_pass": ProjectPassPayload,
 }
 # Frames the server acks; everything else the bridge sends is answered differently.
-ACKED_BRIDGE_TYPES = frozenset({"activity", "turn_chunk", "turn_response", "message"})
+ACKED_BRIDGE_TYPES = frozenset(
+    {"activity", "turn_chunk", "turn_response", "message", "project_response", "project_pass"}
+)
 
 
 def _now() -> str:
@@ -324,6 +367,38 @@ class TurnRequestPayload(_Open):
         return [a for a in ACTION_NAMES if a in named or a == "pass"]
 
 
+class ProjectLimits(BaseModel):
+    max_chars: int = Field(default=PROJECT_REPLY_MAX_CHARS, gt=0)
+    # How long the bridge has from receipt: preferred, since it needs no shared clock.
+    timeout_ms: int | None = Field(default=None, gt=0)
+    # The same moment on the server's clock, for logs.
+    deadline_at: str | None = None
+
+
+class ProjectRequestPayload(_Open):
+    """0.2.0: a person asked the agent to take part in a project discussion.
+
+    Only the ids and the kind must be well-formed; the rest is read loosely
+    (adapters/context.py), so one odd field never costs the answer.
+    """
+
+    project_id: str = Field(pattern=PROJECT_ID_PATTERN)
+    turn_id: int = Field(gt=0)
+    kind: ProjectKind = "reply"
+    # `{title, description, brief}`.
+    project: Any = None
+    # `[{author, kind: human|agent, body, at}]`, oldest first, system messages left out.
+    messages: Any = None
+    # `[{title, body}]`, newest first.
+    notes: Any = None
+    # `{author, body}`: the message that asked; null for an invoke without one.
+    trigger: Any = None
+    asked_by: str | None = None
+    # The owner's approved knowledge, in a meeting turn's shape.
+    knowledge: Any = None
+    limits: ProjectLimits = Field(default_factory=ProjectLimits)
+
+
 class MessageRow(BaseModel):
     id: str
     meeting_id: str
@@ -382,6 +457,7 @@ ErrorFrame = _server_frame("error", ErrorPayload)
 InvitationFrame = _server_frame("invitation", InvitationPayload)
 MeetingJoinedFrame = _server_frame("meeting_joined", MeetingJoinedPayload)
 TurnRequestFrame = _server_frame("turn_request", TurnRequestPayload)
+ProjectRequestFrame = _server_frame("project_request", ProjectRequestPayload)
 MessagePostedFrame = _server_frame("message_posted", MessagePostedPayload)
 EventFrame = _server_frame("event", EventPayload)
 SummaryFrame = _server_frame("summary", SummaryPayload)
@@ -394,6 +470,7 @@ ServerFrame = Annotated[
     | InvitationFrame  # type: ignore[valid-type]
     | MeetingJoinedFrame  # type: ignore[valid-type]
     | TurnRequestFrame  # type: ignore[valid-type]
+    | ProjectRequestFrame  # type: ignore[valid-type]
     | MessagePostedFrame  # type: ignore[valid-type]
     | EventFrame  # type: ignore[valid-type]
     | SummaryFrame,  # type: ignore[valid-type]
@@ -404,7 +481,9 @@ _server_adapter: TypeAdapter[Any] = TypeAdapter(ServerFrame)
 # Server frames the bridge acks back. Fan-out (`message_posted`, `event`) is not acked:
 # every bridge frame counts against the 30-per-10-s limit, and a busy room would spend
 # it all on acks.
-ACKED_SERVER_TYPES = frozenset({"invitation", "meeting_joined", "turn_request", "summary"})
+ACKED_SERVER_TYPES = frozenset(
+    {"invitation", "meeting_joined", "turn_request", "project_request", "summary"}
+)
 
 
 def parse_server_frame(raw: str | bytes) -> Any:

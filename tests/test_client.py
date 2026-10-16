@@ -127,6 +127,7 @@ async def test_authenticates_then_heartbeats(home):
             "secret": SECRET,
             "bridge_version": __version__,
             "adapter_type": "ollama",
+            "capabilities": ["projects"],
         }
         uuid.UUID(auth["id"])
         assert run.client.agent is not None and run.client.agent["handle"] == "saugat.ai"

@@ -2,7 +2,8 @@
 
 - At most `per_meeting` turns in one meeting and `per_day` turns in a local calendar day
   (D7: 40 and 200). Over a cap the turn passes without starting the CLI, and the bridge
-  prints one line saying so (once per meeting, once per day).
+  prints one line saying so (once per meeting, once per day). Project turns (0.2.0) count
+  towards the day only.
 - After two vendor rate-limit errors in a row the bridge stops calling the CLI for ten
   minutes, so a stuck meeting doesn't burn the owner's plan window.
 
@@ -77,8 +78,9 @@ class Caps:
 
     # -------------------------------------------------------------- the checks
 
-    def check(self, meeting_id: str) -> str | None:
-        """Why this meeting's turn must pass without calling the CLI, or None."""
+    def check(self, meeting_id: str | None) -> str | None:
+        """Why this meeting's turn must pass without calling the CLI, or None. A project
+        turn (`meeting_id` None) is held to the backoff and the day's cap only."""
         data = self._load()
         until = float(data.get("backoff_until") or 0)
         if until > self.clock():
@@ -88,8 +90,8 @@ class Caps:
                 "the vendor CLI reported its usage limit twice; passing for about "
                 f"{minutes} more minute(s)",
             )
-        count = int(data["meetings"].get(meeting_id, {}).get("count", 0))
-        if count >= self.per_meeting:
+        count = int(data["meetings"].get(meeting_id, {}).get("count", 0)) if meeting_id else 0
+        if meeting_id is not None and count >= self.per_meeting:
             return self._once(
                 f"meeting:{meeting_id}",
                 f"this meeting reached max_turns_per_meeting ({self.per_meeting}); passing",
@@ -107,15 +109,16 @@ class Caps:
             log.warning("%s", reason)
         return reason
 
-    def record_turn(self, meeting_id: str) -> None:
-        """Counts one CLI turn against this meeting and today."""
+    def record_turn(self, meeting_id: str | None) -> None:
+        """Counts one CLI turn against this meeting (unless a project's) and today."""
         data = self._load()
-        entry = data["meetings"].get(meeting_id)
-        entry = entry if isinstance(entry, dict) else {}
-        data["meetings"][meeting_id] = {
-            "count": int(entry.get("count", 0)) + 1,
-            "last": self.clock(),
-        }
+        if meeting_id is not None:
+            entry = data["meetings"].get(meeting_id)
+            entry = entry if isinstance(entry, dict) else {}
+            data["meetings"][meeting_id] = {
+                "count": int(entry.get("count", 0)) + 1,
+                "last": self.clock(),
+            }
         data["day_count"] = int(data.get("day_count", 0)) + 1
         self._save(data)
 

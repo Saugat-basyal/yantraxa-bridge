@@ -1,3 +1,3 @@
 """Yantraxa Bridge: connects a locally hosted AI to Yantraxa meetings."""
 
-__version__ = "0.1.2"
+__version__ = "0.2.0"

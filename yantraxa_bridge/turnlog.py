@@ -6,7 +6,8 @@ Two kinds of line:
   prompt the model was given (the system text and the fenced meeting data), its raw output,
   the validated actions, timings and usage, and why a turn passed.
 - `sent`, written for every adapter's turn: the actions the bridge sent after redaction,
-  or that the turn failed or ran out of time (the client then passes).
+  or that the turn failed or ran out of time (the client then passes). A project turn
+  (0.2.0) logs its `project_id` and the reply, or why it passed.
 - `downgraded`, when the model answered with an action the turn doesn't allow (a
   proposal with proposals off): what it chose, and that it went out as a message or a pass.
 
@@ -33,9 +34,9 @@ from typing import Any
 
 from .adapters.base import TurnContext
 from .adapters.handler import AdapterTurnHandler
-from .client import TurnIO
+from .client import ProjectAnswer, TurnIO
 from .config import ensure_private_dir
-from .protocol import TurnAction, TurnRequestPayload
+from .protocol import ProjectRequestPayload, TurnAction, TurnRequestPayload
 from .redaction import secret_filter
 
 LOG_DIR = "log"
@@ -112,10 +113,14 @@ class LoggedTurnHandler(AdapterTurnHandler):
         self.adapter_name = adapter_name
 
     def downgraded(self, ctx: TurnContext, action: TurnAction, reason: str) -> None:
+        where = (
+            {"project_id": ctx.project.id, "meeting_code": "project"}
+            if ctx.project is not None
+            else {"meeting_id": ctx.meeting.id, "meeting_code": ctx.meeting.code}
+        )
         self.turnlog.record(
             "downgraded",
-            meeting_id=ctx.meeting.id,
-            meeting_code=ctx.meeting.code,
+            **where,
             turn_id=ctx.turn_id,
             adapter=self.adapter_name,
             chose=action.action,
@@ -155,6 +160,43 @@ class LoggedTurnHandler(AdapterTurnHandler):
             duration_s=round(time.monotonic() - started, 2),
         )
         return actions
+
+    async def take_project_turn(
+        self, request: ProjectRequestPayload, agent: dict[str, Any] | None
+    ) -> ProjectAnswer:
+        started = time.monotonic()
+        fields = {
+            "project_id": request.project_id,
+            "meeting_code": "project",
+            "turn_id": str(request.turn_id),
+            "adapter": self.adapter_name,
+        }
+        try:
+            answer = await super().take_project_turn(request, agent)
+        except asyncio.CancelledError:
+            self.turnlog.record(
+                "sent",
+                **fields,
+                outcome="ran out of time; the bridge passed",
+                duration_s=round(time.monotonic() - started, 2),
+            )
+            raise
+        except Exception as error:
+            self.turnlog.record(
+                "sent",
+                **fields,
+                outcome=f"failed ({type(error).__name__}); the bridge passed",
+                duration_s=round(time.monotonic() - started, 2),
+            )
+            raise
+        self.turnlog.record(
+            "sent",
+            **fields,
+            actions=[{"action": "message", "text": answer.text}] if answer.text else None,
+            outcome=None if answer.text else f"passed ({answer.reason})",
+            duration_s=round(time.monotonic() - started, 2),
+        )
+        return answer
 
 
 # ------------------------------------------------------------------ reading it back

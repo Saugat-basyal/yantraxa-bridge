@@ -7,6 +7,10 @@ What the client does on each close code (see protocol.py):
 - 4009, a newer bridge authenticated as this agent: stop, so two bridges don't keep
   knocking each other off.
 - 4003, paused by the owner, and anything else: reconnect with backoff.
+
+Project requests (0.2.0): the client advertises `projects` in `auth`; each
+`project_request` runs the turn handler's `take_project_turn` under a hard timeout inside
+the request's deadline, and goes back as one `project_response` or `project_pass`.
 """
 
 from __future__ import annotations
@@ -20,6 +24,7 @@ import re
 from collections import OrderedDict, deque
 from collections.abc import Callable
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from enum import StrEnum
 from pathlib import Path
 from typing import Any, Protocol
@@ -34,6 +39,7 @@ from .credentials import Credentials
 from .protocol import (
     ACKED_BRIDGE_TYPES,
     ACKED_SERVER_TYPES,
+    BRIDGE_CAPABILITIES,
     CLOSE_AGENT_PAUSED,
     CLOSE_NORMAL,
     CLOSE_SUPERSEDED,
@@ -41,10 +47,14 @@ from .protocol import (
     DEDUPE_IDS,
     HEARTBEAT_INTERVAL_S,
     MAX_FRAME_BYTES,
+    PROJECT_TIMEOUT_MAX_S,
+    PROJECT_TIMEOUT_MIN_S,
     RATE_LIMIT_FRAMES,
     RATE_LIMIT_WINDOW_S,
     ActivityState,
     MessageRow,
+    ProjectPassReason,
+    ProjectRequestPayload,
     ProtocolError,
     TurnAction,
     TurnRequestPayload,
@@ -191,20 +201,37 @@ class TurnIO:
         )
 
 
+@dataclass(frozen=True)
+class ProjectAnswer:
+    """A project request's answer: the reply's `text`, or the `reason` it passes."""
+
+    text: str | None = None
+    reason: ProjectPassReason = "declined"
+
+
 class TurnHandler(Protocol):
-    """Answers a `turn_request` (Task 4 plugs the adapters in here)."""
+    """Answers a `turn_request` (Task 4 plugs the adapters in here), and from 0.2.0 a
+    `project_request`; a handler without `take_project_turn` passes `unsupported`."""
 
     async def take_turn(self, request: TurnRequestPayload, io: TurnIO) -> list[TurnAction]: ...
 
 
 class PassTurnHandler:
-    """The default until adapters exist: every turn is a pass."""
+    """Every turn is a pass: the default, and `interactive-mcp`, whose agent answers
+    through its MCP client instead. Project requests pass as `unsupported`."""
 
     async def take_turn(self, request: TurnRequestPayload, io: TurnIO) -> list[TurnAction]:
         return [TurnAction(action="pass")]
 
+    async def take_project_turn(
+        self, request: ProjectRequestPayload, agent: dict[str, Any] | None
+    ) -> ProjectAnswer:
+        return ProjectAnswer(reason="unsupported")
+
 
 PASS = [TurnAction(action="pass")]
+# A project answer must be sent this long before the request's deadline.
+PROJECT_DEADLINE_MARGIN_S = 1.0
 _SUMMARY_NAME = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 REVIEW_RATINGS = {
     "yes": "Yes, the agent represented them.",
@@ -263,6 +290,7 @@ class BridgeClient:
 
         self._seen = LruSet(DEDUPE_IDS)
         self._turns: set[str] = set()
+        self._project_turns: set[int] = set()
         self._tasks: set[asyncio.Task[Any]] = set()
         self._limiter = RateLimiter(self.timing.rate_frames, self.timing.rate_window_s)
         self._backoff = Backoff(self.timing.backoff_initial_s, self.timing.backoff_max_s)
@@ -350,6 +378,7 @@ class BridgeClient:
                 "secret": self.credentials.secret_value(),
                 "bridge_version": __version__,
                 "adapter_type": adapter_type_wire(self.config.adapter),
+                "capabilities": list(BRIDGE_CAPABILITIES),
             },
         )
         await self._limiter.acquire()
@@ -522,6 +551,8 @@ class BridgeClient:
                 log.debug("event %s in %s", payload.event.type, payload.event.meeting_id)
             case "turn_request":
                 self._on_turn_request(payload)
+            case "project_request":
+                self._on_project_request(payload)
             case "summary":
                 self._on_summary(payload)
 
@@ -604,6 +635,63 @@ class BridgeClient:
             )
         finally:
             self._turns.discard(request.turn_id)
+
+    def _on_project_request(self, request: ProjectRequestPayload) -> None:
+        if request.turn_id in self._project_turns:
+            return  # a resend of a request already in progress
+        self._project_turns.add(request.turn_id)
+        self._spawn(self._run_project(request))
+
+    def _project_budget(self, request: ProjectRequestPayload) -> float:
+        """Seconds the handler may take: the configured timeout, and the server's
+        `timeout_ms` (and `deadline_at`, if this clock agrees it's sooner) clamped to
+        5 to 55 s, so a clock that is off can't skip the turn or overrun the server's timer."""
+        limits = request.limits
+        server: list[float] = []
+        if limits.timeout_ms is not None:
+            server.append(limits.timeout_ms / 1000 - PROJECT_DEADLINE_MARGIN_S)
+        if limits.deadline_at:
+            try:
+                at = datetime.fromisoformat(limits.deadline_at.replace("Z", "+00:00"))
+                server.append((at - datetime.now(UTC)).total_seconds() - PROJECT_DEADLINE_MARGIN_S)
+            except ValueError:
+                pass
+        if not server:
+            return self.config.timeout_s
+        clamped = min(max(min(server), PROJECT_TIMEOUT_MIN_S), PROJECT_TIMEOUT_MAX_S)
+        return min(self.config.timeout_s, clamped)
+
+    async def _run_project(self, request: ProjectRequestPayload) -> None:
+        handler = getattr(self.turn_handler, "take_project_turn", None)
+        budget = self._project_budget(request)
+        try:
+            if handler is None:
+                answer = ProjectAnswer(reason="unsupported")
+            else:
+                answer = await asyncio.wait_for(handler(request, self.agent), budget)
+        except TimeoutError:
+            log.warning("project turn %s timed out after %.0fs; passing", request.turn_id, budget)
+            answer = ProjectAnswer(reason="timeout")
+        except Exception:
+            log.exception("project turn %s failed; passing", request.turn_id)
+            answer = ProjectAnswer(reason="error")
+        try:
+            if answer.text and answer.text.strip():
+                await self.send(
+                    "project_response",
+                    {"turn_id": request.turn_id, "text": answer.text},
+                )
+            else:
+                await self.send(
+                    "project_pass", {"turn_id": request.turn_id, "reason": answer.reason}
+                )
+        except ProtocolError as error:
+            log.warning(
+                "project turn %s produced a bad answer (%s); passing", request.turn_id, error
+            )
+            await self.send("project_pass", {"turn_id": request.turn_id, "reason": "error"})
+        finally:
+            self._project_turns.discard(request.turn_id)
 
     def _on_summary(self, payload: Any) -> None:
         """Writes `summaries/<code>.md`; a later version (say, once the owner has reviewed

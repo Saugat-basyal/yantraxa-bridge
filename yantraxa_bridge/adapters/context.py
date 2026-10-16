@@ -24,6 +24,12 @@ M5 adds three, also optional (`TurnRequestPayload` declares them):
 
 `allowed_actions` (bridge 0.1.1) says what the seat may do this turn; the prompt and the
 answer schema offer only those. A server that leaves it out allows every action.
+
+`build_project_context` (0.2.0) makes the context for a `project_request`: the project
+goes in `TurnContext.project`, the meeting fields are placeholders, and the only answer
+is a `message` or a pass. Malformed messages and notes are dropped one by one, and a
+lone surrogate in any text (a sender that cut an emoji in half) becomes U+FFFD, so the
+prompt always encodes.
 """
 
 from __future__ import annotations
@@ -34,7 +40,7 @@ from typing import Any
 from pydantic import ValidationError
 
 from ..client import MeetingState
-from ..protocol import MessageRow, TurnRequestPayload
+from ..protocol import MessageRow, ProjectRequestPayload, TurnRequestPayload
 from .base import (
     DEFAULT_MAX_OUTPUT_CHARS,
     MAX_TEXT_CHARS,
@@ -46,6 +52,9 @@ from .base import (
     MeetingInfo,
     OpenMotion,
     OpenProposal,
+    ProjectInfo,
+    ProjectMessage,
+    ProjectNote,
     TurnContext,
 )
 
@@ -233,4 +242,87 @@ def build_context(
         deadline_at=deadline,
         max_output_chars=min(limit, MAX_TEXT_CHARS),
         allowed_actions=list(request.allowed_actions),
+    )
+
+
+# ------------------------------------------------------------------ projects (0.2.0)
+
+
+def _scrub(value: Any) -> Any:
+    """`value` with every lone surrogate in its strings replaced by U+FFFD."""
+    if isinstance(value, str):
+        return value.encode("utf-16", "surrogatepass").decode("utf-16", "replace")
+    if isinstance(value, list):
+        return [_scrub(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _scrub(v) for k, v in value.items()}
+    return value
+
+
+def _entries(value: Any, model: Any) -> list[Any]:
+    if not isinstance(value, list):
+        return []
+    kept = []
+    for entry in value:
+        try:
+            kept.append(model.model_validate(entry))
+        except ValidationError:
+            continue
+    return kept
+
+
+def _text(value: Any, key: str) -> str:
+    field = value.get(key) if isinstance(value, dict) else None
+    return field if isinstance(field, str) else ""
+
+
+def build_project_context(
+    request: ProjectRequestPayload,
+    agent: dict[str, Any] | None,
+    *,
+    timeout_s: float,
+    now: datetime | None = None,
+) -> TurnContext:
+    """The `TurnContext` for a project request; `agent` is the `auth_ok` agent."""
+    agent = agent or {}
+    request = request.model_copy(
+        update={
+            key: _scrub(getattr(request, key))
+            for key in ("project", "messages", "notes", "trigger", "asked_by", "knowledge")
+        }
+    )
+    trigger = None
+    if isinstance(request.trigger, dict):
+        try:
+            trigger = ProjectMessage.model_validate(request.trigger)
+        except ValidationError:
+            trigger = None
+    project = ProjectInfo(
+        id=request.project_id,
+        turn_id=request.turn_id,
+        kind=request.kind,
+        title=_text(request.project, "title"),
+        description=_text(request.project, "description"),
+        brief=_text(request.project, "brief"),
+        messages=_entries(request.messages, ProjectMessage),
+        notes=_entries(request.notes, ProjectNote),
+        trigger=trigger,
+        asked_by=request.asked_by,
+    )
+    deadline = request.limits.deadline_at or _iso(
+        (now or datetime.now(UTC)) + timedelta(seconds=timeout_s)
+    )
+    return TurnContext(
+        turn_id=str(request.turn_id),
+        me=Me(
+            handle=agent.get("handle"),
+            display_name=agent.get("display_name"),
+            seat_id=str(agent.get("id") or ""),
+        ),
+        meeting=MeetingInfo(id=request.project_id, code="project", title=project.title or None),
+        knowledge=Knowledge.from_profile(request.knowledge),
+        deadline_at=deadline,
+        max_output_chars=min(request.limits.max_chars, MAX_TEXT_CHARS),
+        allowed_actions=["message", "pass"],
+        project=project,
     )

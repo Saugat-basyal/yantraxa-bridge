@@ -60,6 +60,12 @@ NO_TOOLS_RULE = (
     "anything up, run anything, open files or browse. Never claim to have done so, and never "
     "claim to remember anything from outside this meeting."
 )
+# The same rule for a project turn, whose own rules end at 6.
+PROJECT_NO_TOOLS_RULE = (
+    "7. You are answering from a terminal program that has no tools. You cannot look "
+    "anything up, run anything, open files or browse. Never claim to have done so, and never "
+    "claim to remember anything from outside this project."
+)
 # Words a vendor CLI uses when the owner's plan allowance or the API rate limit is used up.
 RATE_LIMIT = re.compile(
     r"usage limit|rate[ _-]?limit|limit (?:is )?reached|too many requests|\b429\b|quota",
@@ -515,6 +521,8 @@ def cli_prompt(ctx: TurnContext) -> tuple[str, str, Refs, ContextMessage | None]
     so it stays inside the fence."""
     messages, refs = build_messages(ctx)
     system, user = messages[0]["content"], messages[1]["content"]
+    if ctx.project is not None:
+        return "\n".join([system, "", PROJECT_NO_TOOLS_RULE]), user, refs, None
     lines = [system, "", NO_TOOLS_RULE]
     addressed = addressed_message(ctx)
     replies = "reply" in ctx.allowed_actions
@@ -577,14 +585,16 @@ class CliAdapter:
         raise NotImplementedError
 
     async def take_turn(self, ctx: TurnContext) -> AsyncIterator[TurnEvent]:
-        if self.caps is not None and (blocked := self.caps.check(ctx.meeting.id)):
+        # A project turn counts against the day's cap only: a project isn't a meeting.
+        cap_key = None if ctx.project is not None else ctx.meeting.id
+        if self.caps is not None and (blocked := self.caps.check(cap_key)):
             self._log(ctx, model=None, attempt=Attempt(reason=blocked), actions=None)
-            yield pass_turn()
+            yield pass_turn("limit")
             return
         system, user, refs, addressed = cli_prompt(ctx)
         model = self._model(addressed is not None)
         if self.caps is not None:
-            self.caps.record_turn(ctx.meeting.id)
+            self.caps.record_turn(cap_key)
         try:
             attempt = await self._attempt(ctx, system, user, model)
         except CliNotFound as error:
@@ -628,9 +638,7 @@ class CliAdapter:
             return
         self.turnlog.record(
             "model",
-            meeting_id=ctx.meeting.id,
-            meeting_code=ctx.meeting.code,
-            turn_id=ctx.turn_id,
+            **turn_fields(ctx),
             adapter=self.adapter_name,
             model=model,
             system=system,
@@ -642,6 +650,13 @@ class CliAdapter:
             pass_reason=attempt.reason,
             **attempt.details,
         )
+
+
+def turn_fields(ctx: TurnContext) -> dict[str, Any]:
+    """Where a turn happened, for the transparency log: the meeting, or the project."""
+    if ctx.project is not None:
+        return {"project_id": ctx.project.id, "meeting_code": "project", "turn_id": ctx.turn_id}
+    return {"meeting_id": ctx.meeting.id, "meeting_code": ctx.meeting.code, "turn_id": ctx.turn_id}
 
 
 def short(text: str, limit: int = 300) -> str:
