@@ -21,10 +21,18 @@ class FakeBackend:
         self.uninstalls = 0
         self.is_installed = False
         self.running = False
+        self.home = None  # the YANTRAXA_HOME of the installed service
+        self.last_exit = None
+        # Called with the Launch on install: stands in for the service's own `run --service`,
+        # e.g. writing run-state.json as a connection would.
+        self.on_install = None
 
     def install(self, launch):
         self.installed.append(launch)
         self.is_installed = self.running = True
+        self.home = launch.home
+        if self.on_install is not None:
+            self.on_install(launch)
         return ["Installed the fake service"]
 
     def uninstall(self):
@@ -37,7 +45,13 @@ class FakeBackend:
         from yantraxa_bridge.service import Status
 
         return Status(
-            self.is_installed, self.running, self.kind, "fake", pid=4242 if self.running else None
+            self.is_installed,
+            self.running,
+            self.kind,
+            "fake",
+            pid=4242 if self.running else None,
+            home=self.home,
+            last_exit=self.last_exit,
         )
 
 
@@ -57,3 +71,10 @@ def service_backend(monkeypatch):
     backend = FakeBackend()
     monkeypatch.setattr("yantraxa_bridge.service.current_backend", lambda: backend)
     return backend
+
+
+@pytest.fixture(autouse=True)
+def short_connect_wait(monkeypatch):
+    """`pair` and `service install` wait for the service's first connection; not 20 s here."""
+    monkeypatch.setattr("yantraxa_bridge.cli.CONNECT_WAIT_S", 0.3)
+    monkeypatch.setattr("yantraxa_bridge.cli.CONNECT_POLL_S", 0.02)

@@ -21,7 +21,7 @@ from yantraxa_bridge.config import BridgeConfig
 from yantraxa_bridge.credentials import Credentials
 from yantraxa_bridge.protocol import TurnAction
 
-from .fake_server import FakeServer, frame
+from .fake_server import AGENT, FakeServer, frame
 
 SECRET = "sup3r-secret_value"
 MEETING = "3f2c6a5e-8a0e-4f7a-9d55-0d3c2a1b4c5d"
@@ -381,6 +381,17 @@ async def test_turn_timeout_passes(home):
         assert actions == [{"action": "pass"}]
 
 
+def agent_me(server: FakeServer, status: int):
+    """`GET /v1/agent/me` on the fake server's address, answering `status`."""
+    mock = respx.mock(assert_all_called=False)
+    route = mock.get(f"{server.url}/v1/agent/me")
+    if status == 200:
+        route.mock(return_value=httpx.Response(200, json={"agent": AGENT, "permissions": {}}))
+    else:
+        route.mock(return_value=httpx.Response(status, json={"error": {"code": "unauthorized"}}))
+    return mock, route
+
+
 @pytest.mark.parametrize(
     ("code", "reason"),
     [
@@ -391,21 +402,110 @@ async def test_turn_timeout_passes(home):
 )
 async def test_final_close_codes_stop_the_bridge(home, code, reason):
     async with FakeServer() as server:
-        run = Running(make_client(server, home))
-        await run.__aenter__()
-        await server.authed.wait()
-        assert server.ws is not None
-        await server.ws.close(code, "bye")
-        assert await run.result() == reason
+        mock, _ = agent_me(server, 401)
+        with mock:
+            run = Running(make_client(server, home))
+            await run.__aenter__()
+            await server.authed.wait()
+            assert server.ws is not None
+            await server.ws.close(code, "bye")
+            assert await run.result() == reason
         assert server.connections == 1
 
 
-async def test_unauthorized_at_auth_stops(home):
+async def test_unauthorized_at_auth_stops_once_the_credential_check_says_401(home):
     async with FakeServer() as server:
         server.auth_plan = [4001]
-        run = Running(make_client(server, home))
-        await run.__aenter__()
-        assert await run.result() == StopReason.UNAUTHORIZED
+        mock, route = agent_me(server, 401)
+        with mock:
+            run = Running(make_client(server, home))
+            await run.__aenter__()
+            assert await run.result() == StopReason.UNAUTHORIZED
+            assert route.call_count == 1
+            authorization = route.calls[0].request.headers["Authorization"]
+        assert authorization == f"Bearer ag_abc234:{SECRET}"
+
+
+async def test_a_4001_with_a_valid_credential_is_retried(home, caplog):
+    """The owner's bridge stopped for good on 2026-10-15 after one 4001 that wasn't a verdict
+    (the old 5 s auth timer): now the credential is checked, and a 200 means reconnect."""
+    errors: list[str] = []
+    async with FakeServer() as server:
+        server.auth_plan = [4001, 4001]
+        mock, route = agent_me(server, 200)
+        with mock, caplog.at_level(logging.WARNING, logger="yantraxa_bridge"):
+            client = make_client(server, home)
+            client._on_error = errors.append
+            async with Running(client) as run:
+                await server.authed.wait()
+                assert server.connections == 3
+                assert not run.task.done()
+            assert route.call_count == 2
+    assert "the server closed with 4001 but the credential is valid; retrying" in caplog.text
+    assert errors.count("the server closed with 4001 but the credential is valid; retrying") == 2
+    # Auth is still the first frame of every connection.
+    assert [f["type"] for f in server.auth_frames] == ["auth", "auth", "auth"]
+
+
+@pytest.mark.parametrize("answer", ["network", 500, 403])
+async def test_a_4001_whose_credential_check_is_not_a_401_is_retried(home, answer):
+    async with FakeServer() as server:
+        server.auth_plan = [4001]
+        mock = respx.mock(assert_all_called=False)
+        route = mock.get(f"{server.url}/v1/agent/me")
+        if answer == "network":
+            route.mock(side_effect=httpx.ConnectError("no route"))
+        else:
+            route.mock(return_value=httpx.Response(answer))
+        with mock:
+            async with Running(make_client(server, home)):
+                await server.authed.wait()
+                assert server.connections == 2
+
+
+@pytest.mark.parametrize("code", [4008, 4000, 4011, 4999])
+async def test_auth_incomplete_and_unknown_codes_reconnect(home, code):
+    errors: list[str] = []
+    async with FakeServer() as server:
+        server.auth_plan = [code]
+        client = make_client(server, home)
+        client._on_error = errors.append
+        async with Running(client):
+            await server.authed.wait()
+            assert server.connections == 2
+    if code == 4008:
+        assert errors == ["the server closed before authentication finished (4008); reconnecting"]
+    else:
+        assert errors == [f"connection closed ({code}); reconnecting"]
+
+
+async def test_hooks_hear_each_connection_and_each_failure(home):
+    seen: list = []
+    async with FakeServer() as server:
+        server.auth_plan = [4003]
+        cfg = BridgeConfig(server_url=server.url, adapter="ollama")
+        client = BridgeClient(
+            cfg,
+            Credentials(agent_id="ag_abc234", secret=SECRET),
+            home=home,
+            timing=FAST,
+            on_connected=lambda agent: seen.append(("connected", agent["handle"])),
+            on_error=lambda reason: seen.append(("error", reason)),
+        )
+        async with Running(client):
+            await server.authed.wait()
+            await server.wait_for(lambda: len(seen) == 2)
+    assert seen == [
+        ("error", "agent is paused by its owner; retrying with backoff"),
+        ("connected", "saugat.ai"),
+    ]
+
+
+def test_the_bridge_waits_longer_for_auth_ok_than_the_server_waits_for_auth():
+    from yantraxa_bridge.protocol import SERVER_AUTH_TIMEOUT_S
+
+    assert Timing().auth_timeout_s == 20
+    assert Timing().auth_timeout_s > SERVER_AUTH_TIMEOUT_S
 
 
 async def test_paused_backs_off_and_retries(home):
@@ -469,8 +569,10 @@ async def test_secret_never_reaches_the_logs(home, caplog):
             await server.authed.wait()
             await run.client.send("message", {"meeting_id": MEETING, "body": "hi"})
             await server.wait_for(lambda: not run.client.pending)
-            await server.ws.close(4001, "revoked")
-            await run.result()
+            mock, _ = agent_me(server, 401)
+            with mock:
+                await server.ws.close(4001, "revoked")
+                await run.result()
     assert SECRET not in caplog.text
 
 

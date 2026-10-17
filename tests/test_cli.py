@@ -87,7 +87,7 @@ def test_run_hands_the_adapter_to_the_client(home, monkeypatch):
     seen = {}
 
     class FakeClient:
-        def __init__(self, config, credentials, *, turn_handler):
+        def __init__(self, config, credentials, *, turn_handler, **hooks):
             seen["handler"] = turn_handler
 
         async def run(self):
@@ -121,7 +121,7 @@ def test_run_sweeps_old_turn_folders_and_stops_cleanly_on_sighup(
     events = []
 
     class FakeClient:
-        def __init__(self, config, credentials, *, turn_handler):
+        def __init__(self, config, credentials, *, turn_handler, **hooks):
             self.stopped = asyncio.Event()
 
         async def run(self):
@@ -159,7 +159,7 @@ def test_run_keeps_an_ignored_sighup_ignored_for_nohup(home, monkeypatch):
     seen = {}
 
     class FakeClient:
-        def __init__(self, config, credentials, *, turn_handler):
+        def __init__(self, config, credentials, *, turn_handler, **hooks):
             pass
 
         async def run(self):

@@ -3,10 +3,16 @@
 What the client does on each close code (see protocol.py):
 
 - 1000, the owner disconnected the agent: stop.
-- 4001, the credential is bad or revoked: stop; the CLI runs `diagnose`.
+- 4001, the credential is bad or revoked: the client asks `GET /v1/agent/me` with the
+  credential first. Only a 401 there stops it (the CLI runs `diagnose`); a 200 or no answer
+  means the 4001 was not a verdict on the credential, so it reconnects with backoff (0.2.1).
 - 4009, a newer bridge authenticated as this agent: stop, so two bridges don't keep
   knocking each other off.
-- 4003, paused by the owner, and anything else: reconnect with backoff.
+- 4003, paused by the owner, 4008, auth didn't finish, and anything else: reconnect with
+  backoff.
+
+Each failed attempt goes to `on_error` with its reason, and each connection to
+`on_connected`, so `run` can record them for `status`, `doctor` and `pair`.
 
 Project requests (0.2.0): the client advertises `projects` in `auth`; each
 `project_request` runs the turn handler's `take_project_turn` under a hard timeout inside
@@ -41,6 +47,7 @@ from .protocol import (
     ACKED_SERVER_TYPES,
     BRIDGE_CAPABILITIES,
     CLOSE_AGENT_PAUSED,
+    CLOSE_AUTH_INCOMPLETE,
     CLOSE_NORMAL,
     CLOSE_SUPERSEDED,
     CLOSE_UNAUTHORIZED,
@@ -51,6 +58,7 @@ from .protocol import (
     PROJECT_TIMEOUT_MIN_S,
     RATE_LIMIT_FRAMES,
     RATE_LIMIT_WINDOW_S,
+    SERVER_AUTH_TIMEOUT_S,
     ActivityState,
     MessageRow,
     ProjectPassReason,
@@ -72,7 +80,7 @@ RECENT_MESSAGES = 50
 
 class StopReason(StrEnum):
     DISCONNECTED = "disconnected"  # 1000: the owner disconnected the agent
-    UNAUTHORIZED = "unauthorized"  # 4001: bad or revoked credential
+    UNAUTHORIZED = "unauthorized"  # 4001, and `/v1/agent/me` says 401: bad or revoked credential
     SUPERSEDED = "superseded"  # 4009: another bridge took over
     STOPPED = "stopped"  # stop() was called
 
@@ -91,7 +99,9 @@ class Timing:
     pong_timeout_s: float = 2 * HEARTBEAT_INTERVAL_S + 5
     ack_timeout_s: float = 5.0
     max_resends: int = 3
-    auth_timeout_s: float = 10.0
+    # Longer than the server's own auth timeout, so the server gives its verdict (and records
+    # the attempt) before the bridge gives up.
+    auth_timeout_s: float = SERVER_AUTH_TIMEOUT_S + 5
     backoff_initial_s: float = 1.0
     backoff_max_s: float = 60.0
     # A little under the server's 30 per 10 s, so the bridge never trips it.
@@ -268,6 +278,8 @@ class BridgeClient:
         turn_handler: TurnHandler | None = None,
         timing: Timing | None = None,
         http: httpx.AsyncClient | None = None,
+        on_connected: Callable[[dict[str, Any]], None] | None = None,
+        on_error: Callable[[str], None] | None = None,
     ) -> None:
         if not config.server_url:
             raise ValueError("config has no server_url; run `yantraxa-bridge pair` first")
@@ -279,6 +291,8 @@ class BridgeClient:
         self.server_url = normalise_server_url(config.server_url)
         self.url = ws_url(config.server_url)
         self._http = http
+        self._on_connected = on_connected
+        self._on_error = on_error
 
         self.agent: dict[str, Any] | None = None
         self.permissions: dict[str, Any] = {}
@@ -311,6 +325,8 @@ class BridgeClient:
             while not self._stopping.is_set():
                 self.attempts += 1
                 reason = await self._connect_once()
+                if reason is StopReason.UNAUTHORIZED and not await self._credential_refused():
+                    reason = None
                 if reason is not None:
                     return reason
                 if self._stopping.is_set():
@@ -352,8 +368,14 @@ class BridgeClient:
         except ConnectionClosed as closed:
             return self._classify(closed.rcvd.code if closed.rcvd else None)
         except (OSError, TimeoutError, InvalidHandshake, InvalidURI) as error:
-            log.warning("can't connect to %s: %s", self.url, error)
+            self._failed(f"can't connect to {self.url}: {error or type(error).__name__}")
             return None
+
+    def _failed(self, reason: str) -> None:
+        """A failed attempt: logged, and handed to `on_error`."""
+        log.warning("%s", reason)
+        if self._on_error is not None:
+            self._on_error(reason)
 
     def _classify(self, code: int | None) -> StopReason | None:
         if self._stopping.is_set():
@@ -362,13 +384,43 @@ class BridgeClient:
             return None
         if code in FINAL_CLOSES:
             reason = FINAL_CLOSES[code]
-            log.warning("server closed the connection (%s): %s", code, reason.value)
+            self._failed(f"server closed the connection ({code}): {reason.value}")
             return reason
         if code == CLOSE_AGENT_PAUSED:
-            log.warning("agent is paused by its owner; retrying with backoff")
+            self._failed("agent is paused by its owner; retrying with backoff")
+        elif code == CLOSE_AUTH_INCOMPLETE:
+            self._failed(f"the server closed before authentication finished ({code}); reconnecting")
         else:
-            log.warning("connection closed (%s); reconnecting", code)
+            self._failed(f"connection closed ({code}); reconnecting")
         return None
+
+    async def _credential_refused(self) -> bool:
+        """After a 4001: whether `GET /v1/agent/me` refuses the credential too (HTTP 401).
+        A 4001 can come from something other than a verdict on the credential (an older
+        server's auth timeout did that), and a bridge that stops on it stays down for good."""
+        if self._http is None:
+            self._http = httpx.AsyncClient(timeout=15)
+        try:
+            response = await self._http.get(
+                f"{self.server_url}/v1/agent/me",
+                headers={"Authorization": self.credentials.bearer()},
+            )
+        except httpx.HTTPError as error:
+            self._failed(
+                f"the server closed with 4001 and checking the credential failed "
+                f"({error or type(error).__name__}); retrying"
+            )
+            return False
+        if response.status_code == 401:
+            return True
+        if response.status_code == 200:
+            self._failed("the server closed with 4001 but the credential is valid; retrying")
+        else:
+            self._failed(
+                f"the server closed with 4001 and checking the credential gave "
+                f"HTTP {response.status_code}; retrying"
+            )
+        return False
 
     async def _session(self, ws: ClientConnection) -> StopReason | None:
         auth = make_frame(
@@ -386,19 +438,19 @@ class BridgeClient:
         try:
             raw = await asyncio.wait_for(ws.recv(), self.timing.auth_timeout_s)
         except TimeoutError:
-            log.warning("no auth_ok within %.0fs", self.timing.auth_timeout_s)
+            self._failed(f"no auth_ok within {self.timing.auth_timeout_s:.0f}s")
             self._self_closed = True
             await ws.close()
             return None
         try:
             first = parse_server_frame(raw)
         except ProtocolError as error:
-            log.warning("unexpected first frame: %s", error)
+            self._failed(f"unexpected first frame: {error}")
             self._self_closed = True
             await ws.close()
             return None
         if first.type != "auth_ok":
-            log.warning("expected auth_ok, got %s", first.type)
+            self._failed(f"expected auth_ok, got {first.type}")
             self._self_closed = True
             await ws.close()
             return None
@@ -413,6 +465,8 @@ class BridgeClient:
             return StopReason.STOPPED
         self._last_pong = asyncio.get_running_loop().time()
         log.info("connected as @%s (%s)", self.agent.get("handle"), self.agent.get("id"))
+        if self._on_connected is not None:
+            self._on_connected(self.agent)
 
         workers = [
             asyncio.create_task(self._heartbeat(ws)),
@@ -477,7 +531,7 @@ class BridgeClient:
         while True:
             await asyncio.sleep(self.timing.heartbeat_s)
             if loop.time() - self._last_pong > self.timing.pong_timeout_s:
-                log.warning("no pong for %.0fs; reconnecting", self.timing.pong_timeout_s)
+                self._failed(f"no pong for {self.timing.pong_timeout_s:.0f}s; reconnecting")
                 self._self_closed = True
                 await ws.close(4000, "heartbeat timeout")
                 return

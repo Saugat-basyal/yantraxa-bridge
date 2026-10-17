@@ -33,9 +33,14 @@ from pydantic import (
 
 # Close codes the gateway uses, and what the bridge does on each (see client.py).
 CLOSE_NORMAL = 1000  # the owner disconnected the agent: stop
-CLOSE_UNAUTHORIZED = 4001  # bad, revoked or missing credential: stop, run diagnose
+# 4001: a verdict on the credential (bad, revoked, missing). The bridge checks the credential
+# over HTTP before it stops: a 4001 the check doesn't confirm is retried.
+CLOSE_UNAUTHORIZED = 4001
 CLOSE_AGENT_PAUSED = 4003  # paused by the owner: back off and retry
+CLOSE_AUTH_INCOMPLETE = 4008  # no verdict: auth timed out or the first frame wasn't auth; retry
 CLOSE_SUPERSEDED = 4009  # a newer bridge authenticated as this agent: stop
+# The gateway's auth timeout (AGENT_AUTH_TIMEOUT_MS); the bridge waits longer than this.
+SERVER_AUTH_TIMEOUT_S = 15
 
 HEARTBEAT_INTERVAL_S = 20
 MAX_FRAME_BYTES = 64 * 1024

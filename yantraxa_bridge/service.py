@@ -8,10 +8,16 @@ One per user, never root, no admin:
   (`pythonw`) at logon; the supervisor runs the bridge and restarts it if it dies.
 
 Each runs `yantraxa-bridge run --service` with this `YANTRAXA_HOME`. `--service` sends the
-log to `$YANTRAXA_HOME/log/bridge.log` and exits 0 when restarting can't help (disconnected,
-revoked, replaced by another bridge, not paired, a config error), so only a crash is
-restarted, after 10 s. The unit files are 0644 and hold no secret: the credential stays in
-`$YANTRAXA_HOME/credentials` (0600), and an API key comes from the environment at run time.
+log to `$YANTRAXA_HOME/log/bridge.log` and stays up through anything a person can fix
+(a refused credential, the server refusing, no network), retrying with backoff (0.2.1). It
+exits 0 when the owner disconnected the agent or another bridge took over, and 1 when there
+is nothing to run (not paired, no adapter configured), so the service manager restarts it
+10 s later and a fix is picked up on its own. The unit files are 0644 and hold no secret: the
+credential stays in `$YANTRAXA_HOME/credentials` (0600), and an API key comes from the
+environment at run time.
+
+`YANTRAXA_SERVICE_LABEL` replaces the launchd label, so a test on a Mac can install a real
+service without touching the person's own `com.yantraxa.bridge`.
 """
 
 from __future__ import annotations
@@ -34,6 +40,7 @@ from typing import Protocol
 from .config import ensure_private_dir, yantraxa_home
 
 LABEL = "com.yantraxa.bridge"
+LABEL_ENV = "YANTRAXA_SERVICE_LABEL"
 SYSTEMD_UNIT = "yantraxa-bridge.service"
 WINDOWS_RUN_KEY = r"Software\Microsoft\Windows\CurrentVersion\Run"
 WINDOWS_RUN_VALUE = "YantraxaBridge"
@@ -95,6 +102,8 @@ class Status:
     where: str  # the file or registry value
     pid: int | None = None
     detail: str | None = None  # e.g. "last exit code 0"
+    home: Path | None = None  # the YANTRAXA_HOME it runs, when it can be read
+    last_exit: str | None = None  # the last exit code, when the service manager reports one
 
 
 def bridge_command(argv0: str | None = None) -> list[str]:
@@ -175,10 +184,10 @@ class Backend(Protocol):
 # ------------------------------------------------------------------ macOS: launchd
 
 
-def render_plist(launch: Launch) -> bytes:
+def render_plist(launch: Launch, label: str = LABEL) -> bytes:
     return plistlib.dumps(
         {
-            "Label": LABEL,
+            "Label": label,
             "ProgramArguments": launch.program,
             "EnvironmentVariables": {
                 "YANTRAXA_HOME": str(launch.home),
@@ -196,8 +205,6 @@ def render_plist(launch: Launch) -> bytes:
 
 
 class Launchd:
-    kind = f"launchd agent {LABEL}"
-
     def __init__(
         self,
         *,
@@ -205,15 +212,26 @@ class Launchd:
         uid: int | None = None,
         commands: Commands = run_command,
         sleep: Callable[[float], None] = time.sleep,
+        label: str = LABEL,
     ) -> None:
-        self.plist = (user_home or Path.home()) / "Library" / "LaunchAgents" / f"{LABEL}.plist"
+        self.label = label
+        self.kind = f"launchd agent {label}"
+        self.plist = (user_home or Path.home()) / "Library" / "LaunchAgents" / f"{label}.plist"
         self.domain = f"gui/{os.getuid() if uid is None else uid}"
         self.commands = commands
         self.sleep = sleep
 
     @property
     def target(self) -> str:
-        return f"{self.domain}/{LABEL}"
+        return f"{self.domain}/{self.label}"
+
+    def _home(self) -> Path | None:
+        try:
+            with self.plist.open("rb") as handle:
+                home = plistlib.load(handle).get("EnvironmentVariables", {}).get("YANTRAXA_HOME")
+        except (OSError, plistlib.InvalidFileException, AttributeError):
+            return None
+        return Path(home) if isinstance(home, str) else None
 
     def _print(self) -> Result:
         return self.commands(["launchctl", "print", self.target])
@@ -223,7 +241,7 @@ class Launchd:
         if self._print().returncode == 0:
             self.commands(["launchctl", "bootout", self.target])
         self.plist.parent.mkdir(parents=True, exist_ok=True)
-        _write_public(self.plist, render_plist(launch))
+        _write_public(self.plist, render_plist(launch, self.label))
         self.commands(["launchctl", "enable", self.target])
         # Right after a bootout, bootstrap can fail with "5: Input/output error" for a moment.
         for attempt in range(5):
@@ -239,14 +257,14 @@ class Launchd:
         lines = []
         if self._print().returncode == 0:
             self.commands(["launchctl", "bootout", self.target])
-            lines.append(f"Stopped {LABEL}")
+            lines.append(f"Stopped {self.label}")
         if self.plist.exists():
             self.plist.unlink()
             lines.append(f"Removed {self.plist}")
         return lines
 
     def status(self) -> Status:
-        status = Status(self.plist.exists(), False, self.kind, str(self.plist))
+        status = Status(self.plist.exists(), False, self.kind, str(self.plist), home=self._home())
         shown = self._print()
         if shown.returncode != 0:
             if status.installed:
@@ -257,7 +275,8 @@ class Launchd:
         if fields.get("pid", "").isdigit():
             status.pid = int(fields["pid"])
         if "last exit code" in fields:
-            status.detail = f"last exit code {fields['last exit code']}"
+            status.last_exit = fields["last exit code"]
+            status.detail = f"last exit code {status.last_exit}"
         return status
 
 
@@ -368,8 +387,20 @@ class Systemd:
             self._systemctl("reset-failed", SYSTEMD_UNIT, check=False)
         return lines
 
+    def _home(self) -> Path | None:
+        try:
+            text = self.unit.read_text()
+        except OSError:
+            return None
+        found = re.search(r'^Environment="?YANTRAXA_HOME=(.*?)"?$', text, re.M)
+        if not found:
+            return None
+        # Undo _systemd_quote: `%%`, then the backslash escapes.
+        value = found.group(1).replace("%%", "%")
+        return Path(re.sub(r'\\(["\\])', r"\1", value))
+
     def status(self) -> Status:
-        status = Status(self.unit.exists(), False, self.kind, str(self.unit))
+        status = Status(self.unit.exists(), False, self.kind, str(self.unit), home=self._home())
         shown = self._systemctl(
             "show",
             SYSTEMD_UNIT,
@@ -385,7 +416,8 @@ class Systemd:
         if status.installed and fields.get("ActiveState"):
             status.detail = f"{fields['ActiveState']} ({fields.get('SubState', '?')})"
             if not status.running and fields.get("ExecMainStatus"):
-                status.detail += f", last exit code {fields['ExecMainStatus']}"
+                status.last_exit = fields["ExecMainStatus"]
+                status.detail += f", last exit code {status.last_exit}"
         return status
 
 
@@ -545,6 +577,7 @@ class WindowsRun:
             kind=self.kind,
             where=f"HKCU\\{WINDOWS_RUN_KEY}\\{WINDOWS_RUN_VALUE}",
             pid=pid,
+            home=home if command is not None else None,
         )
 
 
@@ -610,7 +643,7 @@ def _posix_pid_alive(pid: int) -> bool:
 def current_backend() -> Backend:
     """The backend for this OS; tests replace it (see `tests/conftest.py`)."""
     if sys.platform == "darwin":
-        return Launchd()
+        return Launchd(label=os.environ.get(LABEL_ENV) or LABEL)
     if os.name == "nt":
         return WindowsRun()
     if sys.platform.startswith("linux"):
