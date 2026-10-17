@@ -1,3 +1,5 @@
+import os
+
 import pytest
 
 
@@ -71,6 +73,27 @@ def service_backend(monkeypatch):
     backend = FakeBackend()
     monkeypatch.setattr("yantraxa_bridge.service.current_backend", lambda: backend)
     return backend
+
+
+@pytest.fixture(autouse=True)
+def bridge_python(monkeypatch):
+    """`BRIDGE_TEST_PYTHON=/home/runner/.venv/bin/python pytest` runs every test as the release
+    runner does: the bridge as `<that python> -m yantraxa_bridge.cli`, from a path with no space
+    to quote (this checkout's path has one, so printed commands are quoted here and not there)."""
+    python = os.environ.get("BRIDGE_TEST_PYTHON")
+    if not python:
+        return
+    from yantraxa_bridge import service as svc
+
+    real = svc.bridge_command
+
+    def bridge_command(argv0=None):
+        command = real(argv0)
+        if argv0 is None and command[1:] == ["-m", "yantraxa_bridge.cli"]:
+            return [python, *command[1:]]
+        return command
+
+    monkeypatch.setattr(svc, "bridge_command", bridge_command)
 
 
 @pytest.fixture(autouse=True)

@@ -130,7 +130,12 @@ def _command(*args: str) -> str:
     """A bridge command to print, with this bridge's full path so it works when pasted into
     a shell that doesn't have it on the PATH: `/Users/o/.local/bin/yantraxa-bridge run`, or
     on Windows `& "C:\\Users\\O B\\.local\\bin\\yantraxa-bridge.exe" run`."""
-    program, *rest = [*svc.bridge_command(), *args]
+    return _shell_line([*svc.bridge_command(), *args])
+
+
+def _shell_line(words: list[str]) -> str:
+    """`words` quoted for this platform's shell, the way every printed command is."""
+    program, *rest = words
     if os.name != "nt":
         return shlex.join([program, *rest])
     first = f'& "{program}"' if " " in program else program
@@ -749,7 +754,7 @@ def _install_service() -> None:
         typer.echo(line)
     typer.echo(f"The bridge now runs in the background ({backend.kind}).")
     typer.echo("It starts when you log in and restarts if it crashes.")
-    typer.echo(f"  Runs: {' '.join(launch.program)}")
+    typer.echo(f"  Runs: {_shell_line(launch.program)}")
     typer.echo(f"  Logs: {launch.log_dir / svc.BRIDGE_LOG}")
     if config.api_key_env:
         typer.echo(_api_key_hint(config.api_key_env))

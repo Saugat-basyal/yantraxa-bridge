@@ -849,10 +849,12 @@ def test_pair_says_why_the_service_has_not_connected(home, fake_pair, service_ba
     )
     # The fake service runs: `run` would start a second bridge and replace it (4009).
     assert "The background bridge is running and keeps trying." in result.output
-    assert (
-        "If it is still not connected in a minute, run: " + cli._command("doctor") in result.output
-    )
-    assert cli._command("run") not in result.output
+    lines = result.output.splitlines()
+    assert "If it is still not connected in a minute, run: " + cli._command("doctor") in lines
+    # The install's `Runs: … run --service` line contains the `run` command, so this checks
+    # the hint lines, not a bare substring (CI's unquoted path matched it; 0.2.1 release).
+    assert not [line for line in lines if line.endswith(": " + cli._command("run"))]
+    assert "  Runs: " + cli._shell_line([*svc.bridge_command(), "run", "--service"]) in lines
     assert f"Log: {home / 'log' / 'bridge.log'}" in result.output
 
 
